@@ -73,16 +73,6 @@ namespace Flowcort.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Connected32 {
-            get {
-                object obj = ResourceManager.GetObject("Connected32", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
         internal static System.Drawing.Bitmap Delete16 {
             get {
                 object obj = ResourceManager.GetObject("Delete16", resourceCulture);
@@ -96,16 +86,6 @@ namespace Flowcort.Properties {
         internal static System.Drawing.Bitmap Delete32 {
             get {
                 object obj = ResourceManager.GetObject("Delete32", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap Disconnected32 {
-            get {
-                object obj = ResourceManager.GetObject("Disconnected32", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -133,59 +113,9 @@ namespace Flowcort.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Rotate24 {
-            get {
-                object obj = ResourceManager.GetObject("Rotate24", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap Rotate32 {
-            get {
-                object obj = ResourceManager.GetObject("Rotate32", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
         internal static System.Drawing.Bitmap Save32 {
             get {
                 object obj = ResourceManager.GetObject("Save32", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap Settings24 {
-            get {
-                object obj = ResourceManager.GetObject("Settings24", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap Settings32 {
-            get {
-                object obj = ResourceManager.GetObject("Settings32", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap Status_dialog_error_icon {
-            get {
-                object obj = ResourceManager.GetObject("Status-dialog-error-icon", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
