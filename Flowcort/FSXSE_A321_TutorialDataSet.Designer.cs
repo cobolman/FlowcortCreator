@@ -649,8 +649,7 @@ namespace Flowcort {
                         bool Event, 
                         bool Subsection, 
                         string ValToSet, 
-                        bool Done, 
-                        long ItemID) {
+                        bool Done) {
                 ItemRow rowItemRow = ((ItemRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
@@ -671,7 +670,7 @@ namespace Flowcort {
                         Subsection,
                         ValToSet,
                         Done,
-                        ItemID};
+                        null};
                 if ((parentSectionRowByFK_Item_0_0 != null)) {
                     columnValuesArray[0] = parentSectionRowByFK_Item_0_0[0];
                 }
@@ -790,6 +789,8 @@ namespace Flowcort {
                 this.columnSubsection.DefaultValue = ((bool)(false));
                 this.columnValToSet.MaxLength = 50;
                 this.columnDone.AllowDBNull = false;
+                this.columnDone.DefaultValue = ((bool)(false));
+                this.columnItemID.AutoIncrement = true;
                 this.columnItemID.AllowDBNull = false;
                 this.columnItemID.Unique = true;
                 this.ExtendedProperties.Add("Generator_RowClassName", "ItemRow");

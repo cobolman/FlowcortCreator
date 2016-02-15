@@ -306,8 +306,8 @@ WHERE        (SectionID = @Original_SectionID)</CommandText>
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="Done" msprop:Generator_ColumnVarNameInTable="columnDone" msprop:Generator_ColumnPropNameInRow="Done" msprop:Generator_ColumnPropNameInTable="DoneColumn" msprop:Generator_UserColumnName="Done" type="xs:boolean" />
-              <xs:element name="ItemID" msprop:Generator_ColumnVarNameInTable="columnItemID" msprop:Generator_ColumnPropNameInRow="ItemID" msprop:Generator_ColumnPropNameInTable="ItemIDColumn" msprop:Generator_UserColumnName="ItemID" type="xs:long" />
+              <xs:element name="Done" msprop:Generator_ColumnVarNameInTable="columnDone" msprop:Generator_ColumnPropNameInRow="Done" msprop:Generator_ColumnPropNameInTable="DoneColumn" msprop:Generator_UserColumnName="Done" type="xs:boolean" default="false" />
+              <xs:element name="ItemID" msdata:AutoIncrement="true" msprop:Generator_ColumnVarNameInTable="columnItemID" msprop:Generator_ColumnPropNameInRow="ItemID" msprop:Generator_ColumnPropNameInTable="ItemIDColumn" msprop:Generator_UserColumnName="ItemID" type="xs:long" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>
