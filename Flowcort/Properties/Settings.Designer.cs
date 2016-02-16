@@ -26,16 +26,6 @@ namespace Flowcort.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("data source=|DataDirectory|\\FSXSE_A321_Tutorial")]
-        public string FSXSE_A321_TutorialConnectionString {
-            get {
-                return ((string)(this["FSXSE_A321_TutorialConnectionString"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
         [global::System.Configuration.DefaultSettingValueAttribute("data source=|DataDirectory|\\FlowcortData.fct")]
         public string FlowcortDataConnectionString {
             get {

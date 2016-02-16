@@ -2,7 +2,7 @@ PRAGMA foreign_keys = off;
 
 BEGIN TRANSACTION; -- Table: Section
 
-CREATE TABLE [Section] ( [SectionID] INTEGER PRIMARY KEY NOT NULL, [Description] nvarchar(100) NOT NULL
+CREATE TABLE [Section] ( [SectionID] INTEGER PRIMARY KEY NOT NULL, [Position] INTEGER NOT NULL, [Description] nvarchar(100) NOT NULL
 ); 
 
 -- Table: List
@@ -16,6 +16,7 @@ CREATE TABLE [List] (
     [SimManufacturer] nvarchar(50), 
     [SimModel] nvarchar(50), 
     [SimVersion] nvarchar(12), 
+	[SimNameinFS] nvarchar(20),
     [FlowcortVersion] nvarchar(12), 
     [Type] char(1) DEFAULT 'C' NOT NULL CHECK ([Type] IN ('F', 'C', 'T')), [Version] nvarchar(12)
 ); 
