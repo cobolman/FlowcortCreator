@@ -106,21 +106,21 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="FSXSE_A321_TutorialDataSet.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>FSXSE_A321_TutorialDataSet.xsd</DependentUpon>
-    </Compile>
-    <Compile Include="FastDataEntry.cs">
+    <Compile Include="DataEntry.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FastDataEntry.Designer.cs">
-      <DependentUpon>FastDataEntry.cs</DependentUpon>
+    <Compile Include="DataEntry.Designer.cs">
+      <DependentUpon>DataEntry.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FlowcortDataDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>FlowcortDataDataSet.xsd</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="FastDataEntry.resx">
-      <DependentUpon>FastDataEntry.cs</DependentUpon>
+    <EmbeddedResource Include="DataEntry.resx">
+      <DependentUpon>DataEntry.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -132,21 +132,23 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <None Include="FlowcortData.fct" />
-    <None Include="Flowcort_TemporaryKey.pfx" />
-    <None Include="FSXSE_A321_Tutorial">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    <None Include="FlowcortData.fct">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="FSXSE_A321_TutorialDataSet.xsc">
-      <DependentUpon>FSXSE_A321_TutorialDataSet.xsd</DependentUpon>
+    <None Include="FlowcortDataDataSet.xsc">
+      <DependentUpon>FlowcortDataDataSet.xsd</DependentUpon>
     </None>
-    <None Include="FSXSE_A321_TutorialDataSet.xsd">
+    <None Include="FlowcortDataDataSet.xsd">
       <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>FSXSE_A321_TutorialDataSet.Designer.cs</LastGenOutput>
+      <LastGenOutput>FlowcortDataDataSet.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </None>
-    <None Include="FSXSE_A321_TutorialDataSet.xss">
-      <DependentUpon>FSXSE_A321_TutorialDataSet.xsd</DependentUpon>
+    <None Include="FlowcortDataDataSet.xss">
+      <DependentUpon>FlowcortDataDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="Flowcort_TemporaryKey.pfx" />
+    <None Include="FSXSE_A321_Tutorial.ORG">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="packages.config">
       <SubType>Designer</SubType>

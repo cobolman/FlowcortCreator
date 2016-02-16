@@ -23,7 +23,7 @@ CREATE TABLE [List] (
 -- Table: Item
 CREATE TABLE Item ( 
     ItemID INTEGER PRIMARY KEY NOT NULL, 
-    SectionID int NOT NULL, 
+    SectionID INTEGER NOT NULL, 
     Position int NOT NULL, 
     Location nvarchar (50), 
     Area nvarchar (50), 

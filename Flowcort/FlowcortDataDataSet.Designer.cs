@@ -20,9 +20,9 @@ namespace Flowcort {
     [global::System.ComponentModel.DesignerCategoryAttribute("code")]
     [global::System.ComponentModel.ToolboxItem(true)]
     [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedDataSetSchema")]
-    [global::System.Xml.Serialization.XmlRootAttribute("FSXSE_A321_TutorialDataSet")]
+    [global::System.Xml.Serialization.XmlRootAttribute("FlowcortDataDataSet")]
     [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.DataSet")]
-    public partial class FSXSE_A321_TutorialDataSet : global::System.Data.DataSet {
+    public partial class FlowcortDataDataSet : global::System.Data.DataSet {
         
         private ItemDataTable tableItem;
         
@@ -30,15 +30,13 @@ namespace Flowcort {
         
         private SectionDataTable tableSection;
         
-        private global::System.Data.DataRelation relationFK_Item_0_0;
-        
-        private global::System.Data.DataRelation relationFK_Section_0_0;
+        private global::System.Data.DataRelation relationFK_Section_Item;
         
         private global::System.Data.SchemaSerializationMode _schemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public FSXSE_A321_TutorialDataSet() {
+        public FlowcortDataDataSet() {
             this.BeginInit();
             this.InitClass();
             global::System.ComponentModel.CollectionChangeEventHandler schemaChangedHandler = new global::System.ComponentModel.CollectionChangeEventHandler(this.SchemaChanged);
@@ -49,7 +47,7 @@ namespace Flowcort {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        protected FSXSE_A321_TutorialDataSet(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+        protected FlowcortDataDataSet(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
                 base(info, context, false) {
             if ((this.IsBinarySerialized(info, context) == true)) {
                 this.InitVars(false);
@@ -161,7 +159,7 @@ namespace Flowcort {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         public override global::System.Data.DataSet Clone() {
-            FSXSE_A321_TutorialDataSet cln = ((FSXSE_A321_TutorialDataSet)(base.Clone()));
+            FlowcortDataDataSet cln = ((FlowcortDataDataSet)(base.Clone()));
             cln.InitVars();
             cln.SchemaSerializationMode = this.SchemaSerializationMode;
             return cln;
@@ -246,16 +244,15 @@ namespace Flowcort {
                     this.tableSection.InitVars();
                 }
             }
-            this.relationFK_Item_0_0 = this.Relations["FK_Item_0_0"];
-            this.relationFK_Section_0_0 = this.Relations["FK_Section_0_0"];
+            this.relationFK_Section_Item = this.Relations["FK_Section_Item"];
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private void InitClass() {
-            this.DataSetName = "FSXSE_A321_TutorialDataSet";
+            this.DataSetName = "FlowcortDataDataSet";
             this.Prefix = "";
-            this.Namespace = "http://tempuri.org/FSXSE_A321_TutorialDataSet.xsd";
+            this.Namespace = "http://tempuri.org/FlowcortDataDataSet.xsd";
             this.EnforceConstraints = true;
             this.SchemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
             this.tableItem = new ItemDataTable();
@@ -265,21 +262,17 @@ namespace Flowcort {
             this.tableSection = new SectionDataTable();
             base.Tables.Add(this.tableSection);
             global::System.Data.ForeignKeyConstraint fkc;
-            fkc = new global::System.Data.ForeignKeyConstraint("FK_Item_0_0", new global::System.Data.DataColumn[] {
+            fkc = new global::System.Data.ForeignKeyConstraint("FK_Section_Item", new global::System.Data.DataColumn[] {
                         this.tableSection.SectionIDColumn}, new global::System.Data.DataColumn[] {
                         this.tableItem.SectionIDColumn});
             this.tableItem.Constraints.Add(fkc);
             fkc.AcceptRejectRule = global::System.Data.AcceptRejectRule.None;
             fkc.DeleteRule = global::System.Data.Rule.Cascade;
             fkc.UpdateRule = global::System.Data.Rule.Cascade;
-            this.relationFK_Item_0_0 = new global::System.Data.DataRelation("FK_Item_0_0", new global::System.Data.DataColumn[] {
+            this.relationFK_Section_Item = new global::System.Data.DataRelation("FK_Section_Item", new global::System.Data.DataColumn[] {
                         this.tableSection.SectionIDColumn}, new global::System.Data.DataColumn[] {
                         this.tableItem.SectionIDColumn}, false);
-            this.Relations.Add(this.relationFK_Item_0_0);
-            this.relationFK_Section_0_0 = new global::System.Data.DataRelation("FK_Section_0_0", new global::System.Data.DataColumn[] {
-                        this.tableList.ListIDColumn}, new global::System.Data.DataColumn[] {
-                        this.tableSection.ListIDColumn}, false);
-            this.Relations.Add(this.relationFK_Section_0_0);
+            this.Relations.Add(this.relationFK_Section_Item);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -311,7 +304,7 @@ namespace Flowcort {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedDataSetSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
-            FSXSE_A321_TutorialDataSet ds = new FSXSE_A321_TutorialDataSet();
+            FlowcortDataDataSet ds = new FlowcortDataDataSet();
             global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
             global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
             global::System.Xml.Schema.XmlSchemaAny any = new global::System.Xml.Schema.XmlSchemaAny();
@@ -371,7 +364,11 @@ namespace Flowcort {
         [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
         public partial class ItemDataTable : global::System.Data.TypedTableBase<ItemRow> {
             
+            private global::System.Data.DataColumn columnItemID;
+            
             private global::System.Data.DataColumn columnSectionID;
+            
+            private global::System.Data.DataColumn columnPosition;
             
             private global::System.Data.DataColumn columnLocation;
             
@@ -381,9 +378,17 @@ namespace Flowcort {
             
             private global::System.Data.DataColumn columnAction;
             
+            private global::System.Data.DataColumn columnValToSet;
+            
             private global::System.Data.DataColumn columnCoP;
             
             private global::System.Data.DataColumn columnTurnaround;
+            
+            private global::System.Data.DataColumn columnEvent;
+            
+            private global::System.Data.DataColumn columnSubsection;
+            
+            private global::System.Data.DataColumn columnDone;
             
             private global::System.Data.DataColumn columnImage1;
             
@@ -397,17 +402,7 @@ namespace Flowcort {
             
             private global::System.Data.DataColumn columnRemarks;
             
-            private global::System.Data.DataColumn columnPosition;
-            
-            private global::System.Data.DataColumn columnEvent;
-            
-            private global::System.Data.DataColumn columnSubsection;
-            
-            private global::System.Data.DataColumn columnValToSet;
-            
-            private global::System.Data.DataColumn columnDone;
-            
-            private global::System.Data.DataColumn columnItemID;
+            private global::System.Data.DataColumn columnSectionID1;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
@@ -444,9 +439,25 @@ namespace Flowcort {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn ItemIDColumn {
+                get {
+                    return this.columnItemID;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public global::System.Data.DataColumn SectionIDColumn {
                 get {
                     return this.columnSectionID;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn PositionColumn {
+                get {
+                    return this.columnPosition;
                 }
             }
             
@@ -484,6 +495,14 @@ namespace Flowcort {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn ValToSetColumn {
+                get {
+                    return this.columnValToSet;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public global::System.Data.DataColumn CoPColumn {
                 get {
                     return this.columnCoP;
@@ -495,6 +514,30 @@ namespace Flowcort {
             public global::System.Data.DataColumn TurnaroundColumn {
                 get {
                     return this.columnTurnaround;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn EventColumn {
+                get {
+                    return this.columnEvent;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn SubsectionColumn {
+                get {
+                    return this.columnSubsection;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn DoneColumn {
+                get {
+                    return this.columnDone;
                 }
             }
             
@@ -548,49 +591,9 @@ namespace Flowcort {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn PositionColumn {
+            public global::System.Data.DataColumn SectionID1Column {
                 get {
-                    return this.columnPosition;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn EventColumn {
-                get {
-                    return this.columnEvent;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn SubsectionColumn {
-                get {
-                    return this.columnSubsection;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn ValToSetColumn {
-                get {
-                    return this.columnValToSet;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn DoneColumn {
-                get {
-                    return this.columnDone;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn ItemIDColumn {
-                get {
-                    return this.columnItemID;
+                    return this.columnSectionID1;
                 }
             }
             
@@ -632,47 +635,49 @@ namespace Flowcort {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public ItemRow AddItemRow(
-                        SectionRow parentSectionRowByFK_Item_0_0, 
+                        SectionRow parentSectionRowByFK_Section_Item, 
+                        int Position, 
                         string Location, 
                         string Area, 
                         string Part, 
                         string Action, 
+                        string ValToSet, 
                         bool CoP, 
                         bool Turnaround, 
+                        bool Event, 
+                        bool Subsection, 
+                        bool Done, 
                         string Image1, 
                         string Image2, 
                         string Image3, 
                         string Audio, 
                         string Video, 
                         string Remarks, 
-                        int Position, 
-                        bool Event, 
-                        bool Subsection, 
-                        string ValToSet, 
-                        bool Done) {
+                        int SectionID1) {
                 ItemRow rowItemRow = ((ItemRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
+                        null,
+                        Position,
                         Location,
                         Area,
                         Part,
                         Action,
+                        ValToSet,
                         CoP,
                         Turnaround,
+                        Event,
+                        Subsection,
+                        Done,
                         Image1,
                         Image2,
                         Image3,
                         Audio,
                         Video,
                         Remarks,
-                        Position,
-                        Event,
-                        Subsection,
-                        ValToSet,
-                        Done,
-                        null};
-                if ((parentSectionRowByFK_Item_0_0 != null)) {
-                    columnValuesArray[0] = parentSectionRowByFK_Item_0_0[0];
+                        SectionID1};
+                if ((parentSectionRowByFK_Section_Item != null)) {
+                    columnValuesArray[1] = parentSectionRowByFK_Section_Item[0];
                 }
                 rowItemRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowItemRow);
@@ -703,32 +708,37 @@ namespace Flowcort {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             internal void InitVars() {
+                this.columnItemID = base.Columns["ItemID"];
                 this.columnSectionID = base.Columns["SectionID"];
+                this.columnPosition = base.Columns["Position"];
                 this.columnLocation = base.Columns["Location"];
                 this.columnArea = base.Columns["Area"];
                 this.columnPart = base.Columns["Part"];
                 this.columnAction = base.Columns["Action"];
+                this.columnValToSet = base.Columns["ValToSet"];
                 this.columnCoP = base.Columns["CoP"];
                 this.columnTurnaround = base.Columns["Turnaround"];
+                this.columnEvent = base.Columns["Event"];
+                this.columnSubsection = base.Columns["Subsection"];
+                this.columnDone = base.Columns["Done"];
                 this.columnImage1 = base.Columns["Image1"];
                 this.columnImage2 = base.Columns["Image2"];
                 this.columnImage3 = base.Columns["Image3"];
                 this.columnAudio = base.Columns["Audio"];
                 this.columnVideo = base.Columns["Video"];
                 this.columnRemarks = base.Columns["Remarks"];
-                this.columnPosition = base.Columns["Position"];
-                this.columnEvent = base.Columns["Event"];
-                this.columnSubsection = base.Columns["Subsection"];
-                this.columnValToSet = base.Columns["ValToSet"];
-                this.columnDone = base.Columns["Done"];
-                this.columnItemID = base.Columns["ItemID"];
+                this.columnSectionID1 = base.Columns["SectionID1"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             private void InitClass() {
-                this.columnSectionID = new global::System.Data.DataColumn("SectionID", typeof(int), null, global::System.Data.MappingType.Element);
+                this.columnItemID = new global::System.Data.DataColumn("ItemID", typeof(long), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnItemID);
+                this.columnSectionID = new global::System.Data.DataColumn("SectionID", typeof(long), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnSectionID);
+                this.columnPosition = new global::System.Data.DataColumn("Position", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnPosition);
                 this.columnLocation = new global::System.Data.DataColumn("Location", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnLocation);
                 this.columnArea = new global::System.Data.DataColumn("Area", typeof(string), null, global::System.Data.MappingType.Element);
@@ -737,10 +747,18 @@ namespace Flowcort {
                 base.Columns.Add(this.columnPart);
                 this.columnAction = new global::System.Data.DataColumn("Action", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnAction);
+                this.columnValToSet = new global::System.Data.DataColumn("ValToSet", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnValToSet);
                 this.columnCoP = new global::System.Data.DataColumn("CoP", typeof(bool), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnCoP);
                 this.columnTurnaround = new global::System.Data.DataColumn("Turnaround", typeof(bool), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnTurnaround);
+                this.columnEvent = new global::System.Data.DataColumn("Event", typeof(bool), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnEvent);
+                this.columnSubsection = new global::System.Data.DataColumn("Subsection", typeof(bool), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnSubsection);
+                this.columnDone = new global::System.Data.DataColumn("Done", typeof(bool), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnDone);
                 this.columnImage1 = new global::System.Data.DataColumn("Image1", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnImage1);
                 this.columnImage2 = new global::System.Data.DataColumn("Image2", typeof(string), null, global::System.Data.MappingType.Element);
@@ -753,46 +771,35 @@ namespace Flowcort {
                 base.Columns.Add(this.columnVideo);
                 this.columnRemarks = new global::System.Data.DataColumn("Remarks", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnRemarks);
-                this.columnPosition = new global::System.Data.DataColumn("Position", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnPosition);
-                this.columnEvent = new global::System.Data.DataColumn("Event", typeof(bool), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnEvent);
-                this.columnSubsection = new global::System.Data.DataColumn("Subsection", typeof(bool), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnSubsection);
-                this.columnValToSet = new global::System.Data.DataColumn("ValToSet", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnValToSet);
-                this.columnDone = new global::System.Data.DataColumn("Done", typeof(bool), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnDone);
-                this.columnItemID = new global::System.Data.DataColumn("ItemID", typeof(long), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnItemID);
+                this.columnSectionID1 = new global::System.Data.DataColumn("SectionID1", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnSectionID1);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnItemID}, true));
+                this.columnItemID.AutoIncrement = true;
+                this.columnItemID.AutoIncrementSeed = -1;
+                this.columnItemID.AutoIncrementStep = -1;
+                this.columnItemID.AllowDBNull = false;
+                this.columnItemID.Unique = true;
                 this.columnSectionID.AllowDBNull = false;
+                this.columnPosition.AllowDBNull = false;
                 this.columnLocation.MaxLength = 50;
                 this.columnArea.MaxLength = 50;
                 this.columnPart.MaxLength = 50;
                 this.columnAction.MaxLength = 50;
+                this.columnValToSet.MaxLength = 50;
                 this.columnCoP.AllowDBNull = false;
-                this.columnCoP.DefaultValue = ((bool)(false));
                 this.columnTurnaround.AllowDBNull = false;
-                this.columnTurnaround.DefaultValue = ((bool)(false));
+                this.columnEvent.AllowDBNull = false;
+                this.columnSubsection.AllowDBNull = false;
+                this.columnDone.AllowDBNull = false;
                 this.columnImage1.MaxLength = 50;
                 this.columnImage2.MaxLength = 50;
                 this.columnImage3.MaxLength = 50;
                 this.columnAudio.MaxLength = 50;
                 this.columnVideo.MaxLength = 250;
                 this.columnRemarks.MaxLength = 500;
-                this.columnPosition.AllowDBNull = false;
-                this.columnEvent.AllowDBNull = false;
-                this.columnEvent.DefaultValue = ((bool)(false));
-                this.columnSubsection.AllowDBNull = false;
-                this.columnSubsection.DefaultValue = ((bool)(false));
-                this.columnValToSet.MaxLength = 50;
-                this.columnDone.AllowDBNull = false;
-                this.columnDone.DefaultValue = ((bool)(false));
-                this.columnItemID.AutoIncrement = true;
-                this.columnItemID.AllowDBNull = false;
-                this.columnItemID.Unique = true;
+                this.columnSectionID1.AllowDBNull = false;
+                this.columnSectionID1.Caption = "SectionID";
                 this.ExtendedProperties.Add("Generator_RowClassName", "ItemRow");
                 this.ExtendedProperties.Add("Generator_RowEvArgName", "ItemRowChangeEvent");
                 this.ExtendedProperties.Add("Generator_RowEvHandlerName", "ItemRowChangeEventHandler");
@@ -867,7 +874,7 @@ namespace Flowcort {
             public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
                 global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
                 global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
-                FSXSE_A321_TutorialDataSet ds = new FSXSE_A321_TutorialDataSet();
+                FlowcortDataDataSet ds = new FlowcortDataDataSet();
                 global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
                 any1.Namespace = "http://www.w3.org/2001/XMLSchema";
                 any1.MinOccurs = new decimal(0);
@@ -937,6 +944,22 @@ namespace Flowcort {
             
             private global::System.Data.DataColumn columnName;
             
+            private global::System.Data.DataColumn columnFlightSim;
+            
+            private global::System.Data.DataColumn columnFlightSimVersion;
+            
+            private global::System.Data.DataColumn columnAircraftManufacturer;
+            
+            private global::System.Data.DataColumn columnAircraftModel;
+            
+            private global::System.Data.DataColumn columnSimManufacturer;
+            
+            private global::System.Data.DataColumn columnSimModel;
+            
+            private global::System.Data.DataColumn columnSimVersion;
+            
+            private global::System.Data.DataColumn columnFlowcortVersion;
+            
             private global::System.Data.DataColumn columnType;
             
             private global::System.Data.DataColumn columnVersion;
@@ -987,6 +1010,70 @@ namespace Flowcort {
             public global::System.Data.DataColumn NameColumn {
                 get {
                     return this.columnName;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn FlightSimColumn {
+                get {
+                    return this.columnFlightSim;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn FlightSimVersionColumn {
+                get {
+                    return this.columnFlightSimVersion;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn AircraftManufacturerColumn {
+                get {
+                    return this.columnAircraftManufacturer;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn AircraftModelColumn {
+                get {
+                    return this.columnAircraftModel;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn SimManufacturerColumn {
+                get {
+                    return this.columnSimManufacturer;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn SimModelColumn {
+                get {
+                    return this.columnSimModel;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn SimVersionColumn {
+                get {
+                    return this.columnSimVersion;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn FlowcortVersionColumn {
+                get {
+                    return this.columnFlowcortVersion;
                 }
             }
             
@@ -1043,11 +1130,19 @@ namespace Flowcort {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public ListRow AddListRow(string Name, string Type, string Version) {
+            public ListRow AddListRow(string Name, string FlightSim, string FlightSimVersion, string AircraftManufacturer, string AircraftModel, string SimManufacturer, string SimModel, string SimVersion, string FlowcortVersion, string Type, string Version) {
                 ListRow rowListRow = ((ListRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
                         Name,
+                        FlightSim,
+                        FlightSimVersion,
+                        AircraftManufacturer,
+                        AircraftModel,
+                        SimManufacturer,
+                        SimModel,
+                        SimVersion,
+                        FlowcortVersion,
                         Type,
                         Version};
                 rowListRow.ItemArray = columnValuesArray;
@@ -1057,7 +1152,7 @@ namespace Flowcort {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public ListRow FindByListID(int ListID) {
+            public ListRow FindByListID(long ListID) {
                 return ((ListRow)(this.Rows.Find(new object[] {
                             ListID})));
             }
@@ -1081,6 +1176,14 @@ namespace Flowcort {
             internal void InitVars() {
                 this.columnListID = base.Columns["ListID"];
                 this.columnName = base.Columns["Name"];
+                this.columnFlightSim = base.Columns["FlightSim"];
+                this.columnFlightSimVersion = base.Columns["FlightSimVersion"];
+                this.columnAircraftManufacturer = base.Columns["AircraftManufacturer"];
+                this.columnAircraftModel = base.Columns["AircraftModel"];
+                this.columnSimManufacturer = base.Columns["SimManufacturer"];
+                this.columnSimModel = base.Columns["SimModel"];
+                this.columnSimVersion = base.Columns["SimVersion"];
+                this.columnFlowcortVersion = base.Columns["FlowcortVersion"];
                 this.columnType = base.Columns["Type"];
                 this.columnVersion = base.Columns["Version"];
             }
@@ -1088,10 +1191,26 @@ namespace Flowcort {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             private void InitClass() {
-                this.columnListID = new global::System.Data.DataColumn("ListID", typeof(int), null, global::System.Data.MappingType.Element);
+                this.columnListID = new global::System.Data.DataColumn("ListID", typeof(long), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnListID);
                 this.columnName = new global::System.Data.DataColumn("Name", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnName);
+                this.columnFlightSim = new global::System.Data.DataColumn("FlightSim", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnFlightSim);
+                this.columnFlightSimVersion = new global::System.Data.DataColumn("FlightSimVersion", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnFlightSimVersion);
+                this.columnAircraftManufacturer = new global::System.Data.DataColumn("AircraftManufacturer", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnAircraftManufacturer);
+                this.columnAircraftModel = new global::System.Data.DataColumn("AircraftModel", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnAircraftModel);
+                this.columnSimManufacturer = new global::System.Data.DataColumn("SimManufacturer", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnSimManufacturer);
+                this.columnSimModel = new global::System.Data.DataColumn("SimModel", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnSimModel);
+                this.columnSimVersion = new global::System.Data.DataColumn("SimVersion", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnSimVersion);
+                this.columnFlowcortVersion = new global::System.Data.DataColumn("FlowcortVersion", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnFlowcortVersion);
                 this.columnType = new global::System.Data.DataColumn("Type", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnType);
                 this.columnVersion = new global::System.Data.DataColumn("Version", typeof(string), null, global::System.Data.MappingType.Element);
@@ -1104,6 +1223,14 @@ namespace Flowcort {
                 this.columnListID.AllowDBNull = false;
                 this.columnListID.Unique = true;
                 this.columnName.MaxLength = 50;
+                this.columnFlightSim.MaxLength = 12;
+                this.columnFlightSimVersion.MaxLength = 12;
+                this.columnAircraftManufacturer.MaxLength = 50;
+                this.columnAircraftModel.MaxLength = 50;
+                this.columnSimManufacturer.MaxLength = 50;
+                this.columnSimModel.MaxLength = 50;
+                this.columnSimVersion.MaxLength = 12;
+                this.columnFlowcortVersion.MaxLength = 12;
                 this.columnType.AllowDBNull = false;
                 this.columnType.MaxLength = 1;
                 this.columnVersion.MaxLength = 12;
@@ -1174,7 +1301,7 @@ namespace Flowcort {
             public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
                 global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
                 global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
-                FSXSE_A321_TutorialDataSet ds = new FSXSE_A321_TutorialDataSet();
+                FlowcortDataDataSet ds = new FlowcortDataDataSet();
                 global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
                 any1.Namespace = "http://www.w3.org/2001/XMLSchema";
                 any1.MinOccurs = new decimal(0);
@@ -1242,8 +1369,6 @@ namespace Flowcort {
             
             private global::System.Data.DataColumn columnSectionID;
             
-            private global::System.Data.DataColumn columnListID;
-            
             private global::System.Data.DataColumn columnDescription;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1284,14 +1409,6 @@ namespace Flowcort {
             public global::System.Data.DataColumn SectionIDColumn {
                 get {
                     return this.columnSectionID;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn ListIDColumn {
-                get {
-                    return this.columnListID;
                 }
             }
             
@@ -1340,15 +1457,11 @@ namespace Flowcort {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public SectionRow AddSectionRow(ListRow parentListRowByFK_Section_0_0, string Description) {
+            public SectionRow AddSectionRow(string Description) {
                 SectionRow rowSectionRow = ((SectionRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
-                        null,
                         Description};
-                if ((parentListRowByFK_Section_0_0 != null)) {
-                    columnValuesArray[1] = parentListRowByFK_Section_0_0[0];
-                }
                 rowSectionRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowSectionRow);
                 return rowSectionRow;
@@ -1356,7 +1469,7 @@ namespace Flowcort {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public SectionRow FindBySectionID(int SectionID) {
+            public SectionRow FindBySectionID(long SectionID) {
                 return ((SectionRow)(this.Rows.Find(new object[] {
                             SectionID})));
             }
@@ -1379,17 +1492,14 @@ namespace Flowcort {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             internal void InitVars() {
                 this.columnSectionID = base.Columns["SectionID"];
-                this.columnListID = base.Columns["ListID"];
                 this.columnDescription = base.Columns["Description"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             private void InitClass() {
-                this.columnSectionID = new global::System.Data.DataColumn("SectionID", typeof(int), null, global::System.Data.MappingType.Element);
+                this.columnSectionID = new global::System.Data.DataColumn("SectionID", typeof(long), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnSectionID);
-                this.columnListID = new global::System.Data.DataColumn("ListID", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnListID);
                 this.columnDescription = new global::System.Data.DataColumn("Description", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnDescription);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
@@ -1399,8 +1509,6 @@ namespace Flowcort {
                 this.columnSectionID.AutoIncrementStep = -1;
                 this.columnSectionID.AllowDBNull = false;
                 this.columnSectionID.Unique = true;
-                this.columnListID.AllowDBNull = false;
-                this.columnListID.DefaultValue = ((int)(1));
                 this.columnDescription.AllowDBNull = false;
                 this.columnDescription.MaxLength = 100;
             }
@@ -1470,7 +1578,7 @@ namespace Flowcort {
             public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
                 global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
                 global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
-                FSXSE_A321_TutorialDataSet ds = new FSXSE_A321_TutorialDataSet();
+                FlowcortDataDataSet ds = new FlowcortDataDataSet();
                 global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
                 any1.Namespace = "http://www.w3.org/2001/XMLSchema";
                 any1.MinOccurs = new decimal(0);
@@ -1545,12 +1653,34 @@ namespace Flowcort {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public int SectionID {
+            public long ItemID {
                 get {
-                    return ((int)(this[this.tableItem.SectionIDColumn]));
+                    return ((long)(this[this.tableItem.ItemIDColumn]));
+                }
+                set {
+                    this[this.tableItem.ItemIDColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public long SectionID {
+                get {
+                    return ((long)(this[this.tableItem.SectionIDColumn]));
                 }
                 set {
                     this[this.tableItem.SectionIDColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public int Position {
+                get {
+                    return ((int)(this[this.tableItem.PositionColumn]));
+                }
+                set {
+                    this[this.tableItem.PositionColumn] = value;
                 }
             }
             
@@ -1620,6 +1750,22 @@ namespace Flowcort {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string ValToSet {
+                get {
+                    try {
+                        return ((string)(this[this.tableItem.ValToSetColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'ValToSet\' in table \'Item\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableItem.ValToSetColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool CoP {
                 get {
                     return ((bool)(this[this.tableItem.CoPColumn]));
@@ -1637,6 +1783,39 @@ namespace Flowcort {
                 }
                 set {
                     this[this.tableItem.TurnaroundColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Event {
+                get {
+                    return ((bool)(this[this.tableItem.EventColumn]));
+                }
+                set {
+                    this[this.tableItem.EventColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Subsection {
+                get {
+                    return ((bool)(this[this.tableItem.SubsectionColumn]));
+                }
+                set {
+                    this[this.tableItem.SubsectionColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Done {
+                get {
+                    return ((bool)(this[this.tableItem.DoneColumn]));
+                }
+                set {
+                    this[this.tableItem.DoneColumn] = value;
                 }
             }
             
@@ -1738,72 +1917,12 @@ namespace Flowcort {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public int Position {
+            public int SectionID1 {
                 get {
-                    return ((int)(this[this.tableItem.PositionColumn]));
+                    return ((int)(this[this.tableItem.SectionID1Column]));
                 }
                 set {
-                    this[this.tableItem.PositionColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool Event {
-                get {
-                    return ((bool)(this[this.tableItem.EventColumn]));
-                }
-                set {
-                    this[this.tableItem.EventColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool Subsection {
-                get {
-                    return ((bool)(this[this.tableItem.SubsectionColumn]));
-                }
-                set {
-                    this[this.tableItem.SubsectionColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string ValToSet {
-                get {
-                    try {
-                        return ((string)(this[this.tableItem.ValToSetColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'ValToSet\' in table \'Item\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableItem.ValToSetColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool Done {
-                get {
-                    return ((bool)(this[this.tableItem.DoneColumn]));
-                }
-                set {
-                    this[this.tableItem.DoneColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public long ItemID {
-                get {
-                    return ((long)(this[this.tableItem.ItemIDColumn]));
-                }
-                set {
-                    this[this.tableItem.ItemIDColumn] = value;
+                    this[this.tableItem.SectionID1Column] = value;
                 }
             }
             
@@ -1811,10 +1930,10 @@ namespace Flowcort {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public SectionRow SectionRow {
                 get {
-                    return ((SectionRow)(this.GetParentRow(this.Table.ParentRelations["FK_Item_0_0"])));
+                    return ((SectionRow)(this.GetParentRow(this.Table.ParentRelations["FK_Section_Item"])));
                 }
                 set {
-                    this.SetParentRow(value, this.Table.ParentRelations["FK_Item_0_0"]);
+                    this.SetParentRow(value, this.Table.ParentRelations["FK_Section_Item"]);
                 }
             }
             
@@ -1864,6 +1983,18 @@ namespace Flowcort {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetActionNull() {
                 this[this.tableItem.ActionColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsValToSetNull() {
+                return this.IsNull(this.tableItem.ValToSetColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetValToSetNull() {
+                this[this.tableItem.ValToSetColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1937,18 +2068,6 @@ namespace Flowcort {
             public void SetRemarksNull() {
                 this[this.tableItem.RemarksColumn] = global::System.Convert.DBNull;
             }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsValToSetNull() {
-                return this.IsNull(this.tableItem.ValToSetColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetValToSetNull() {
-                this[this.tableItem.ValToSetColumn] = global::System.Convert.DBNull;
-            }
         }
         
         /// <summary>
@@ -1967,9 +2086,9 @@ namespace Flowcort {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public int ListID {
+            public long ListID {
                 get {
-                    return ((int)(this[this.tableList.ListIDColumn]));
+                    return ((long)(this[this.tableList.ListIDColumn]));
                 }
                 set {
                     this[this.tableList.ListIDColumn] = value;
@@ -1989,6 +2108,134 @@ namespace Flowcort {
                 }
                 set {
                     this[this.tableList.NameColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string FlightSim {
+                get {
+                    try {
+                        return ((string)(this[this.tableList.FlightSimColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'FlightSim\' in table \'List\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableList.FlightSimColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string FlightSimVersion {
+                get {
+                    try {
+                        return ((string)(this[this.tableList.FlightSimVersionColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'FlightSimVersion\' in table \'List\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableList.FlightSimVersionColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string AircraftManufacturer {
+                get {
+                    try {
+                        return ((string)(this[this.tableList.AircraftManufacturerColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'AircraftManufacturer\' in table \'List\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableList.AircraftManufacturerColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string AircraftModel {
+                get {
+                    try {
+                        return ((string)(this[this.tableList.AircraftModelColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'AircraftModel\' in table \'List\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableList.AircraftModelColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string SimManufacturer {
+                get {
+                    try {
+                        return ((string)(this[this.tableList.SimManufacturerColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'SimManufacturer\' in table \'List\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableList.SimManufacturerColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string SimModel {
+                get {
+                    try {
+                        return ((string)(this[this.tableList.SimModelColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'SimModel\' in table \'List\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableList.SimModelColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string SimVersion {
+                get {
+                    try {
+                        return ((string)(this[this.tableList.SimVersionColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'SimVersion\' in table \'List\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableList.SimVersionColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string FlowcortVersion {
+                get {
+                    try {
+                        return ((string)(this[this.tableList.FlowcortVersionColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'FlowcortVersion\' in table \'List\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableList.FlowcortVersionColumn] = value;
                 }
             }
             
@@ -2033,6 +2280,102 @@ namespace Flowcort {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsFlightSimNull() {
+                return this.IsNull(this.tableList.FlightSimColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetFlightSimNull() {
+                this[this.tableList.FlightSimColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsFlightSimVersionNull() {
+                return this.IsNull(this.tableList.FlightSimVersionColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetFlightSimVersionNull() {
+                this[this.tableList.FlightSimVersionColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsAircraftManufacturerNull() {
+                return this.IsNull(this.tableList.AircraftManufacturerColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetAircraftManufacturerNull() {
+                this[this.tableList.AircraftManufacturerColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsAircraftModelNull() {
+                return this.IsNull(this.tableList.AircraftModelColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetAircraftModelNull() {
+                this[this.tableList.AircraftModelColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsSimManufacturerNull() {
+                return this.IsNull(this.tableList.SimManufacturerColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetSimManufacturerNull() {
+                this[this.tableList.SimManufacturerColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsSimModelNull() {
+                return this.IsNull(this.tableList.SimModelColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetSimModelNull() {
+                this[this.tableList.SimModelColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsSimVersionNull() {
+                return this.IsNull(this.tableList.SimVersionColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetSimVersionNull() {
+                this[this.tableList.SimVersionColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsFlowcortVersionNull() {
+                return this.IsNull(this.tableList.FlowcortVersionColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetFlowcortVersionNull() {
+                this[this.tableList.FlowcortVersionColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IsVersionNull() {
                 return this.IsNull(this.tableList.VersionColumn);
             }
@@ -2041,17 +2384,6 @@ namespace Flowcort {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetVersionNull() {
                 this[this.tableList.VersionColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public SectionRow[] GetSectionRows() {
-                if ((this.Table.ChildRelations["FK_Section_0_0"] == null)) {
-                    return new SectionRow[0];
-                }
-                else {
-                    return ((SectionRow[])(base.GetChildRows(this.Table.ChildRelations["FK_Section_0_0"])));
-                }
             }
         }
         
@@ -2071,23 +2403,12 @@ namespace Flowcort {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public int SectionID {
+            public long SectionID {
                 get {
-                    return ((int)(this[this.tableSection.SectionIDColumn]));
+                    return ((long)(this[this.tableSection.SectionIDColumn]));
                 }
                 set {
                     this[this.tableSection.SectionIDColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public int ListID {
-                get {
-                    return ((int)(this[this.tableSection.ListIDColumn]));
-                }
-                set {
-                    this[this.tableSection.ListIDColumn] = value;
                 }
             }
             
@@ -2104,23 +2425,12 @@ namespace Flowcort {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public ListRow ListRow {
-                get {
-                    return ((ListRow)(this.GetParentRow(this.Table.ParentRelations["FK_Section_0_0"])));
-                }
-                set {
-                    this.SetParentRow(value, this.Table.ParentRelations["FK_Section_0_0"]);
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public ItemRow[] GetItemRows() {
-                if ((this.Table.ChildRelations["FK_Item_0_0"] == null)) {
+                if ((this.Table.ChildRelations["FK_Section_Item"] == null)) {
                     return new ItemRow[0];
                 }
                 else {
-                    return ((ItemRow[])(base.GetChildRows(this.Table.ChildRelations["FK_Item_0_0"])));
+                    return ((ItemRow[])(base.GetChildRows(this.Table.ChildRelations["FK_Section_Item"])));
                 }
             }
         }
@@ -2228,7 +2538,7 @@ namespace Flowcort {
         }
     }
 }
-namespace Flowcort.FSXSE_A321_TutorialDataSetTableAdapters {
+namespace Flowcort.FlowcortDataDataSetTableAdapters {
     
     
     /// <summary>
@@ -2352,25 +2662,25 @@ namespace Flowcort.FSXSE_A321_TutorialDataSetTableAdapters {
             global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
             tableMapping.SourceTable = "Table";
             tableMapping.DataSetTable = "Item";
-            tableMapping.ColumnMappings.Add("SectionID", "SectionID");
+            tableMapping.ColumnMappings.Add("ItemID", "ItemID");
+            tableMapping.ColumnMappings.Add("Position", "Position");
             tableMapping.ColumnMappings.Add("Location", "Location");
             tableMapping.ColumnMappings.Add("Area", "Area");
             tableMapping.ColumnMappings.Add("Part", "Part");
             tableMapping.ColumnMappings.Add("Action", "Action");
+            tableMapping.ColumnMappings.Add("ValToSet", "ValToSet");
             tableMapping.ColumnMappings.Add("CoP", "CoP");
             tableMapping.ColumnMappings.Add("Turnaround", "Turnaround");
+            tableMapping.ColumnMappings.Add("Event", "Event");
+            tableMapping.ColumnMappings.Add("Subsection", "Subsection");
+            tableMapping.ColumnMappings.Add("Done", "Done");
             tableMapping.ColumnMappings.Add("Image1", "Image1");
             tableMapping.ColumnMappings.Add("Image2", "Image2");
             tableMapping.ColumnMappings.Add("Image3", "Image3");
             tableMapping.ColumnMappings.Add("Audio", "Audio");
             tableMapping.ColumnMappings.Add("Video", "Video");
             tableMapping.ColumnMappings.Add("Remarks", "Remarks");
-            tableMapping.ColumnMappings.Add("Position", "Position");
-            tableMapping.ColumnMappings.Add("Event", "Event");
-            tableMapping.ColumnMappings.Add("Subsection", "Subsection");
-            tableMapping.ColumnMappings.Add("ValToSet", "ValToSet");
-            tableMapping.ColumnMappings.Add("Done", "Done");
-            tableMapping.ColumnMappings.Add("ItemID", "ItemID");
+            tableMapping.ColumnMappings.Add("SectionID", "SectionID1");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::System.Data.SQLite.SQLiteCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
@@ -2386,109 +2696,123 @@ namespace Flowcort.FSXSE_A321_TutorialDataSetTableAdapters {
             this._adapter.DeleteCommand.Parameters.Add(param);
             this._adapter.InsertCommand = new global::System.Data.SQLite.SQLiteCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = @"INSERT INTO [main].[sqlite_default_schema].[Item] ([ItemID], [SectionID], [Position], [Location], [Area], [Part], [Action], [ValToSet], [CoP], [Turnaround], [Event], [Subsection], [Done], [Image1], [Image2], [Image3], [Audio], [Video], [Remarks]) VALUES (@ItemID, @SectionID, @Position, @Location, @Area, @Part, @Action, @ValToSet, @CoP, @Turnaround, @Event, @Subsection, @Done, @Image1, @Image2, @Image3, @Audio, @Video, @Remarks)";
+            this._adapter.InsertCommand.CommandText = @"INSERT INTO Item
+                         (SectionID, Position, Location, Area, Part, [Action], ValToSet, CoP, Turnaround, Event, Subsection, Done, Image1, Image2, Image3, Audio, Video, Remarks)
+VALUES        (@SectionID, @Position, @Location, @Area, @Part, @Action, @ValToSet, @CoP, @Turnaround, @Event, @Subsection, @Done, @Image1, @Image2, @Image3, @Audio, @Video, @Remarks)";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
-            param = new global::System.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "@ItemID";
-            param.DbType = global::System.Data.DbType.Int64;
-            param.DbType = global::System.Data.DbType.Int64;
-            param.SourceColumn = "ItemID";
-            this._adapter.InsertCommand.Parameters.Add(param);
             param = new global::System.Data.SQLite.SQLiteParameter();
             param.ParameterName = "@SectionID";
             param.DbType = global::System.Data.DbType.Int32;
             param.DbType = global::System.Data.DbType.Int32;
+            param.Size = 4;
             param.SourceColumn = "SectionID";
             this._adapter.InsertCommand.Parameters.Add(param);
             param = new global::System.Data.SQLite.SQLiteParameter();
             param.ParameterName = "@Position";
             param.DbType = global::System.Data.DbType.Int32;
             param.DbType = global::System.Data.DbType.Int32;
+            param.Size = 4;
             param.SourceColumn = "Position";
             this._adapter.InsertCommand.Parameters.Add(param);
             param = new global::System.Data.SQLite.SQLiteParameter();
             param.ParameterName = "@Location";
             param.DbType = global::System.Data.DbType.String;
+            param.Size = 50;
             param.SourceColumn = "Location";
             this._adapter.InsertCommand.Parameters.Add(param);
             param = new global::System.Data.SQLite.SQLiteParameter();
             param.ParameterName = "@Area";
             param.DbType = global::System.Data.DbType.String;
+            param.Size = 50;
             param.SourceColumn = "Area";
             this._adapter.InsertCommand.Parameters.Add(param);
             param = new global::System.Data.SQLite.SQLiteParameter();
             param.ParameterName = "@Part";
             param.DbType = global::System.Data.DbType.String;
+            param.Size = 50;
             param.SourceColumn = "Part";
             this._adapter.InsertCommand.Parameters.Add(param);
             param = new global::System.Data.SQLite.SQLiteParameter();
             param.ParameterName = "@Action";
             param.DbType = global::System.Data.DbType.String;
+            param.Size = 50;
             param.SourceColumn = "Action";
             this._adapter.InsertCommand.Parameters.Add(param);
             param = new global::System.Data.SQLite.SQLiteParameter();
             param.ParameterName = "@ValToSet";
             param.DbType = global::System.Data.DbType.String;
+            param.Size = 50;
             param.SourceColumn = "ValToSet";
             this._adapter.InsertCommand.Parameters.Add(param);
             param = new global::System.Data.SQLite.SQLiteParameter();
             param.ParameterName = "@CoP";
             param.DbType = global::System.Data.DbType.Boolean;
             param.DbType = global::System.Data.DbType.Boolean;
+            param.Size = 1;
             param.SourceColumn = "CoP";
             this._adapter.InsertCommand.Parameters.Add(param);
             param = new global::System.Data.SQLite.SQLiteParameter();
             param.ParameterName = "@Turnaround";
             param.DbType = global::System.Data.DbType.Boolean;
             param.DbType = global::System.Data.DbType.Boolean;
+            param.Size = 1;
             param.SourceColumn = "Turnaround";
             this._adapter.InsertCommand.Parameters.Add(param);
             param = new global::System.Data.SQLite.SQLiteParameter();
             param.ParameterName = "@Event";
             param.DbType = global::System.Data.DbType.Boolean;
             param.DbType = global::System.Data.DbType.Boolean;
+            param.Size = 1;
             param.SourceColumn = "Event";
             this._adapter.InsertCommand.Parameters.Add(param);
             param = new global::System.Data.SQLite.SQLiteParameter();
             param.ParameterName = "@Subsection";
             param.DbType = global::System.Data.DbType.Boolean;
             param.DbType = global::System.Data.DbType.Boolean;
+            param.Size = 1;
             param.SourceColumn = "Subsection";
             this._adapter.InsertCommand.Parameters.Add(param);
             param = new global::System.Data.SQLite.SQLiteParameter();
             param.ParameterName = "@Done";
             param.DbType = global::System.Data.DbType.Boolean;
             param.DbType = global::System.Data.DbType.Boolean;
+            param.Size = 1;
             param.SourceColumn = "Done";
             this._adapter.InsertCommand.Parameters.Add(param);
             param = new global::System.Data.SQLite.SQLiteParameter();
             param.ParameterName = "@Image1";
             param.DbType = global::System.Data.DbType.String;
+            param.Size = 50;
             param.SourceColumn = "Image1";
             this._adapter.InsertCommand.Parameters.Add(param);
             param = new global::System.Data.SQLite.SQLiteParameter();
             param.ParameterName = "@Image2";
             param.DbType = global::System.Data.DbType.String;
+            param.Size = 50;
             param.SourceColumn = "Image2";
             this._adapter.InsertCommand.Parameters.Add(param);
             param = new global::System.Data.SQLite.SQLiteParameter();
             param.ParameterName = "@Image3";
             param.DbType = global::System.Data.DbType.String;
+            param.Size = 50;
             param.SourceColumn = "Image3";
             this._adapter.InsertCommand.Parameters.Add(param);
             param = new global::System.Data.SQLite.SQLiteParameter();
             param.ParameterName = "@Audio";
             param.DbType = global::System.Data.DbType.String;
+            param.Size = 50;
             param.SourceColumn = "Audio";
             this._adapter.InsertCommand.Parameters.Add(param);
             param = new global::System.Data.SQLite.SQLiteParameter();
             param.ParameterName = "@Video";
             param.DbType = global::System.Data.DbType.String;
+            param.Size = 250;
             param.SourceColumn = "Video";
             this._adapter.InsertCommand.Parameters.Add(param);
             param = new global::System.Data.SQLite.SQLiteParameter();
             param.ParameterName = "@Remarks";
             param.DbType = global::System.Data.DbType.String;
+            param.Size = 500;
             param.SourceColumn = "Remarks";
             this._adapter.InsertCommand.Parameters.Add(param);
             this._adapter.UpdateCommand = new global::System.Data.SQLite.SQLiteCommand();
@@ -2634,7 +2958,7 @@ WHERE        (ItemID = @Original_ItemID)";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SQLite.SQLiteConnection();
-            this._connection.ConnectionString = global::Flowcort.Properties.Settings.Default.FSXSE_A321_TutorialConnectionString;
+            this._connection.ConnectionString = global::Flowcort.Properties.Settings.Default.FlowcortDataConnectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2653,7 +2977,7 @@ WHERE        (ItemID = @Original_ItemID)";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(FSXSE_A321_TutorialDataSet.ItemDataTable dataTable) {
+        public virtual int Fill(FlowcortDataDataSet.ItemDataTable dataTable) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
@@ -2666,9 +2990,9 @@ WHERE        (ItemID = @Original_ItemID)";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual FSXSE_A321_TutorialDataSet.ItemDataTable GetData() {
+        public virtual FlowcortDataDataSet.ItemDataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            FSXSE_A321_TutorialDataSet.ItemDataTable dataTable = new FSXSE_A321_TutorialDataSet.ItemDataTable();
+            FlowcortDataDataSet.ItemDataTable dataTable = new FlowcortDataDataSet.ItemDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
         }
@@ -2676,14 +3000,14 @@ WHERE        (ItemID = @Original_ItemID)";
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(FSXSE_A321_TutorialDataSet.ItemDataTable dataTable) {
+        public virtual int Update(FlowcortDataDataSet.ItemDataTable dataTable) {
             return this.Adapter.Update(dataTable);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(FSXSE_A321_TutorialDataSet dataSet) {
+        public virtual int Update(FlowcortDataDataSet dataSet) {
             return this.Adapter.Update(dataSet, "Item");
         }
         
@@ -2700,6 +3024,283 @@ WHERE        (ItemID = @Original_ItemID)";
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         public virtual int Update(global::System.Data.DataRow[] dataRows) {
             return this.Adapter.Update(dataRows);
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
+        public virtual int Delete(long Original_ItemID) {
+            this.Adapter.DeleteCommand.Parameters[0].Value = ((long)(Original_ItemID));
+            global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
+            if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
+                        != global::System.Data.ConnectionState.Open)) {
+                this.Adapter.DeleteCommand.Connection.Open();
+            }
+            try {
+                int returnValue = this.Adapter.DeleteCommand.ExecuteNonQuery();
+                return returnValue;
+            }
+            finally {
+                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
+                    this.Adapter.DeleteCommand.Connection.Close();
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
+        public virtual int Insert(
+                    int SectionID, 
+                    int Position, 
+                    string Location, 
+                    string Area, 
+                    string Part, 
+                    string Action, 
+                    string ValToSet, 
+                    bool CoP, 
+                    bool Turnaround, 
+                    bool Event, 
+                    bool Subsection, 
+                    bool Done, 
+                    string Image1, 
+                    string Image2, 
+                    string Image3, 
+                    string Audio, 
+                    string Video, 
+                    string Remarks) {
+            this.Adapter.InsertCommand.Parameters[0].Value = ((int)(SectionID));
+            this.Adapter.InsertCommand.Parameters[1].Value = ((int)(Position));
+            if ((Location == null)) {
+                this.Adapter.InsertCommand.Parameters[2].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[2].Value = ((string)(Location));
+            }
+            if ((Area == null)) {
+                this.Adapter.InsertCommand.Parameters[3].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[3].Value = ((string)(Area));
+            }
+            if ((Part == null)) {
+                this.Adapter.InsertCommand.Parameters[4].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[4].Value = ((string)(Part));
+            }
+            if ((Action == null)) {
+                this.Adapter.InsertCommand.Parameters[5].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[5].Value = ((string)(Action));
+            }
+            if ((ValToSet == null)) {
+                this.Adapter.InsertCommand.Parameters[6].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[6].Value = ((string)(ValToSet));
+            }
+            this.Adapter.InsertCommand.Parameters[7].Value = ((bool)(CoP));
+            this.Adapter.InsertCommand.Parameters[8].Value = ((bool)(Turnaround));
+            this.Adapter.InsertCommand.Parameters[9].Value = ((bool)(Event));
+            this.Adapter.InsertCommand.Parameters[10].Value = ((bool)(Subsection));
+            this.Adapter.InsertCommand.Parameters[11].Value = ((bool)(Done));
+            if ((Image1 == null)) {
+                this.Adapter.InsertCommand.Parameters[12].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[12].Value = ((string)(Image1));
+            }
+            if ((Image2 == null)) {
+                this.Adapter.InsertCommand.Parameters[13].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[13].Value = ((string)(Image2));
+            }
+            if ((Image3 == null)) {
+                this.Adapter.InsertCommand.Parameters[14].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[14].Value = ((string)(Image3));
+            }
+            if ((Audio == null)) {
+                this.Adapter.InsertCommand.Parameters[15].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[15].Value = ((string)(Audio));
+            }
+            if ((Video == null)) {
+                this.Adapter.InsertCommand.Parameters[16].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[16].Value = ((string)(Video));
+            }
+            if ((Remarks == null)) {
+                this.Adapter.InsertCommand.Parameters[17].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[17].Value = ((string)(Remarks));
+            }
+            global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
+            if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
+                        != global::System.Data.ConnectionState.Open)) {
+                this.Adapter.InsertCommand.Connection.Open();
+            }
+            try {
+                int returnValue = this.Adapter.InsertCommand.ExecuteNonQuery();
+                return returnValue;
+            }
+            finally {
+                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
+                    this.Adapter.InsertCommand.Connection.Close();
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
+        public virtual int Update(
+                    long ItemID, 
+                    int SectionID, 
+                    int Position, 
+                    string Location, 
+                    string Area, 
+                    string Part, 
+                    string Action, 
+                    string ValToSet, 
+                    bool CoP, 
+                    bool Turnaround, 
+                    bool Event, 
+                    bool Subsection, 
+                    bool Done, 
+                    string Image1, 
+                    string Image2, 
+                    string Image3, 
+                    string Audio, 
+                    string Video, 
+                    string Remarks, 
+                    long Original_ItemID) {
+            this.Adapter.UpdateCommand.Parameters[0].Value = ((long)(ItemID));
+            this.Adapter.UpdateCommand.Parameters[1].Value = ((int)(SectionID));
+            this.Adapter.UpdateCommand.Parameters[2].Value = ((int)(Position));
+            if ((Location == null)) {
+                this.Adapter.UpdateCommand.Parameters[3].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[3].Value = ((string)(Location));
+            }
+            if ((Area == null)) {
+                this.Adapter.UpdateCommand.Parameters[4].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[4].Value = ((string)(Area));
+            }
+            if ((Part == null)) {
+                this.Adapter.UpdateCommand.Parameters[5].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[5].Value = ((string)(Part));
+            }
+            if ((Action == null)) {
+                this.Adapter.UpdateCommand.Parameters[6].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[6].Value = ((string)(Action));
+            }
+            if ((ValToSet == null)) {
+                this.Adapter.UpdateCommand.Parameters[7].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[7].Value = ((string)(ValToSet));
+            }
+            this.Adapter.UpdateCommand.Parameters[8].Value = ((bool)(CoP));
+            this.Adapter.UpdateCommand.Parameters[9].Value = ((bool)(Turnaround));
+            this.Adapter.UpdateCommand.Parameters[10].Value = ((bool)(Event));
+            this.Adapter.UpdateCommand.Parameters[11].Value = ((bool)(Subsection));
+            this.Adapter.UpdateCommand.Parameters[12].Value = ((bool)(Done));
+            if ((Image1 == null)) {
+                this.Adapter.UpdateCommand.Parameters[13].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[13].Value = ((string)(Image1));
+            }
+            if ((Image2 == null)) {
+                this.Adapter.UpdateCommand.Parameters[14].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[14].Value = ((string)(Image2));
+            }
+            if ((Image3 == null)) {
+                this.Adapter.UpdateCommand.Parameters[15].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[15].Value = ((string)(Image3));
+            }
+            if ((Audio == null)) {
+                this.Adapter.UpdateCommand.Parameters[16].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[16].Value = ((string)(Audio));
+            }
+            if ((Video == null)) {
+                this.Adapter.UpdateCommand.Parameters[17].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[17].Value = ((string)(Video));
+            }
+            if ((Remarks == null)) {
+                this.Adapter.UpdateCommand.Parameters[18].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[18].Value = ((string)(Remarks));
+            }
+            this.Adapter.UpdateCommand.Parameters[19].Value = ((long)(Original_ItemID));
+            global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
+            if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
+                        != global::System.Data.ConnectionState.Open)) {
+                this.Adapter.UpdateCommand.Connection.Open();
+            }
+            try {
+                int returnValue = this.Adapter.UpdateCommand.ExecuteNonQuery();
+                return returnValue;
+            }
+            finally {
+                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
+                    this.Adapter.UpdateCommand.Connection.Close();
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
+        public virtual int Update(
+                    int SectionID, 
+                    int Position, 
+                    string Location, 
+                    string Area, 
+                    string Part, 
+                    string Action, 
+                    string ValToSet, 
+                    bool CoP, 
+                    bool Turnaround, 
+                    bool Event, 
+                    bool Subsection, 
+                    bool Done, 
+                    string Image1, 
+                    string Image2, 
+                    string Image3, 
+                    string Audio, 
+                    string Video, 
+                    string Remarks, 
+                    long Original_ItemID) {
+            return this.Update(Original_ItemID, SectionID, Position, Location, Area, Part, Action, ValToSet, CoP, Turnaround, Event, Subsection, Done, Image1, Image2, Image3, Audio, Video, Remarks, Original_ItemID);
         }
     }
     
@@ -2824,10 +3425,18 @@ WHERE        (ItemID = @Original_ItemID)";
             global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
             tableMapping.SourceTable = "Table";
             tableMapping.DataSetTable = "List";
+            tableMapping.ColumnMappings.Add("ListID", "ListID");
             tableMapping.ColumnMappings.Add("Name", "Name");
+            tableMapping.ColumnMappings.Add("FlightSim", "FlightSim");
+            tableMapping.ColumnMappings.Add("FlightSimVersion", "FlightSimVersion");
+            tableMapping.ColumnMappings.Add("AircraftManufacturer", "AircraftManufacturer");
+            tableMapping.ColumnMappings.Add("AircraftModel", "AircraftModel");
+            tableMapping.ColumnMappings.Add("SimManufacturer", "SimManufacturer");
+            tableMapping.ColumnMappings.Add("SimModel", "SimModel");
+            tableMapping.ColumnMappings.Add("SimVersion", "SimVersion");
+            tableMapping.ColumnMappings.Add("FlowcortVersion", "FlowcortVersion");
             tableMapping.ColumnMappings.Add("Type", "Type");
             tableMapping.ColumnMappings.Add("Version", "Version");
-            tableMapping.ColumnMappings.Add("ListID", "ListID");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::System.Data.SQLite.SQLiteCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
@@ -2843,35 +3452,82 @@ WHERE        (ItemID = @Original_ItemID)";
             this._adapter.DeleteCommand.Parameters.Add(param);
             this._adapter.InsertCommand = new global::System.Data.SQLite.SQLiteCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = "INSERT INTO [main].[sqlite_default_schema].[List] ([ListID], [Name], [Type], [Ver" +
-                "sion]) VALUES (@ListID, @Name, @Type, @Version)";
+            this._adapter.InsertCommand.CommandText = @"INSERT INTO List
+                         (Name, FlightSim, FlightSimVersion, AircraftManufacturer, AircraftModel, SimManufacturer, SimModel, SimVersion, FlowcortVersion, Type, Version)
+VALUES        (@Name, @FlightSim, @FlightSimVersion, @AircraftManufacturer, @AircraftModel, @SimManufacturer, @SimModel, @SimVersion, @FlowcortVersion, @Type, @Version)";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
-            param = new global::System.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "@ListID";
-            param.DbType = global::System.Data.DbType.Int64;
-            param.DbType = global::System.Data.DbType.Int64;
-            param.SourceColumn = "ListID";
-            this._adapter.InsertCommand.Parameters.Add(param);
             param = new global::System.Data.SQLite.SQLiteParameter();
             param.ParameterName = "@Name";
             param.DbType = global::System.Data.DbType.String;
+            param.Size = 50;
             param.SourceColumn = "Name";
             this._adapter.InsertCommand.Parameters.Add(param);
             param = new global::System.Data.SQLite.SQLiteParameter();
+            param.ParameterName = "@FlightSim";
+            param.DbType = global::System.Data.DbType.String;
+            param.Size = 12;
+            param.SourceColumn = "FlightSim";
+            this._adapter.InsertCommand.Parameters.Add(param);
+            param = new global::System.Data.SQLite.SQLiteParameter();
+            param.ParameterName = "@FlightSimVersion";
+            param.DbType = global::System.Data.DbType.String;
+            param.Size = 12;
+            param.SourceColumn = "FlightSimVersion";
+            this._adapter.InsertCommand.Parameters.Add(param);
+            param = new global::System.Data.SQLite.SQLiteParameter();
+            param.ParameterName = "@AircraftManufacturer";
+            param.DbType = global::System.Data.DbType.String;
+            param.Size = 50;
+            param.SourceColumn = "AircraftManufacturer";
+            this._adapter.InsertCommand.Parameters.Add(param);
+            param = new global::System.Data.SQLite.SQLiteParameter();
+            param.ParameterName = "@AircraftModel";
+            param.DbType = global::System.Data.DbType.String;
+            param.Size = 50;
+            param.SourceColumn = "AircraftModel";
+            this._adapter.InsertCommand.Parameters.Add(param);
+            param = new global::System.Data.SQLite.SQLiteParameter();
+            param.ParameterName = "@SimManufacturer";
+            param.DbType = global::System.Data.DbType.String;
+            param.Size = 50;
+            param.SourceColumn = "SimManufacturer";
+            this._adapter.InsertCommand.Parameters.Add(param);
+            param = new global::System.Data.SQLite.SQLiteParameter();
+            param.ParameterName = "@SimModel";
+            param.DbType = global::System.Data.DbType.String;
+            param.Size = 50;
+            param.SourceColumn = "SimModel";
+            this._adapter.InsertCommand.Parameters.Add(param);
+            param = new global::System.Data.SQLite.SQLiteParameter();
+            param.ParameterName = "@SimVersion";
+            param.DbType = global::System.Data.DbType.String;
+            param.Size = 12;
+            param.SourceColumn = "SimVersion";
+            this._adapter.InsertCommand.Parameters.Add(param);
+            param = new global::System.Data.SQLite.SQLiteParameter();
+            param.ParameterName = "@FlowcortVersion";
+            param.DbType = global::System.Data.DbType.String;
+            param.Size = 12;
+            param.SourceColumn = "FlowcortVersion";
+            this._adapter.InsertCommand.Parameters.Add(param);
+            param = new global::System.Data.SQLite.SQLiteParameter();
             param.ParameterName = "@Type";
-            param.DbType = global::System.Data.DbType.AnsiStringFixedLength;
-            param.DbType = global::System.Data.DbType.AnsiStringFixedLength;
+            param.DbType = global::System.Data.DbType.String;
+            param.Size = 1;
             param.SourceColumn = "Type";
             this._adapter.InsertCommand.Parameters.Add(param);
             param = new global::System.Data.SQLite.SQLiteParameter();
             param.ParameterName = "@Version";
             param.DbType = global::System.Data.DbType.String;
+            param.Size = 12;
             param.SourceColumn = "Version";
             this._adapter.InsertCommand.Parameters.Add(param);
             this._adapter.UpdateCommand = new global::System.Data.SQLite.SQLiteCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = "UPDATE       List\r\nSET                ListID = @ListID, Name = @Name, Type = @Typ" +
-                "e, Version = @Version\r\nWHERE        (ListID = @Original_ListID)";
+            this._adapter.UpdateCommand.CommandText = @"UPDATE       List
+SET                ListID = @ListID, Name = @Name, FlightSim = @FlightSim, FlightSimVersion = @FlightSimVersion, AircraftManufacturer = @AircraftManufacturer, AircraftModel = @AircraftModel, 
+                         SimManufacturer = @SimManufacturer, SimModel = @SimModel, SimVersion = @SimVersion, FlowcortVersion = @FlowcortVersion, Type = @Type, Version = @Version
+WHERE        (ListID = @Original_ListID)";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
             param = new global::System.Data.SQLite.SQLiteParameter();
             param.ParameterName = "@ListID";
@@ -2885,6 +3541,54 @@ WHERE        (ItemID = @Original_ItemID)";
             param.DbType = global::System.Data.DbType.String;
             param.Size = 50;
             param.SourceColumn = "Name";
+            this._adapter.UpdateCommand.Parameters.Add(param);
+            param = new global::System.Data.SQLite.SQLiteParameter();
+            param.ParameterName = "@FlightSim";
+            param.DbType = global::System.Data.DbType.String;
+            param.Size = 12;
+            param.SourceColumn = "FlightSim";
+            this._adapter.UpdateCommand.Parameters.Add(param);
+            param = new global::System.Data.SQLite.SQLiteParameter();
+            param.ParameterName = "@FlightSimVersion";
+            param.DbType = global::System.Data.DbType.String;
+            param.Size = 12;
+            param.SourceColumn = "FlightSimVersion";
+            this._adapter.UpdateCommand.Parameters.Add(param);
+            param = new global::System.Data.SQLite.SQLiteParameter();
+            param.ParameterName = "@AircraftManufacturer";
+            param.DbType = global::System.Data.DbType.String;
+            param.Size = 50;
+            param.SourceColumn = "AircraftManufacturer";
+            this._adapter.UpdateCommand.Parameters.Add(param);
+            param = new global::System.Data.SQLite.SQLiteParameter();
+            param.ParameterName = "@AircraftModel";
+            param.DbType = global::System.Data.DbType.String;
+            param.Size = 50;
+            param.SourceColumn = "AircraftModel";
+            this._adapter.UpdateCommand.Parameters.Add(param);
+            param = new global::System.Data.SQLite.SQLiteParameter();
+            param.ParameterName = "@SimManufacturer";
+            param.DbType = global::System.Data.DbType.String;
+            param.Size = 50;
+            param.SourceColumn = "SimManufacturer";
+            this._adapter.UpdateCommand.Parameters.Add(param);
+            param = new global::System.Data.SQLite.SQLiteParameter();
+            param.ParameterName = "@SimModel";
+            param.DbType = global::System.Data.DbType.String;
+            param.Size = 50;
+            param.SourceColumn = "SimModel";
+            this._adapter.UpdateCommand.Parameters.Add(param);
+            param = new global::System.Data.SQLite.SQLiteParameter();
+            param.ParameterName = "@SimVersion";
+            param.DbType = global::System.Data.DbType.String;
+            param.Size = 12;
+            param.SourceColumn = "SimVersion";
+            this._adapter.UpdateCommand.Parameters.Add(param);
+            param = new global::System.Data.SQLite.SQLiteParameter();
+            param.ParameterName = "@FlowcortVersion";
+            param.DbType = global::System.Data.DbType.String;
+            param.Size = 12;
+            param.SourceColumn = "FlowcortVersion";
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::System.Data.SQLite.SQLiteParameter();
             param.ParameterName = "@Type";
@@ -2912,7 +3616,7 @@ WHERE        (ItemID = @Original_ItemID)";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SQLite.SQLiteConnection();
-            this._connection.ConnectionString = global::Flowcort.Properties.Settings.Default.FSXSE_A321_TutorialConnectionString;
+            this._connection.ConnectionString = global::Flowcort.Properties.Settings.Default.FlowcortDataConnectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2921,7 +3625,9 @@ WHERE        (ItemID = @Original_ItemID)";
             this._commandCollection = new global::System.Data.SQLite.SQLiteCommand[1];
             this._commandCollection[0] = new global::System.Data.SQLite.SQLiteCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT ListID, Name, Type, Version FROM List";
+            this._commandCollection[0].CommandText = "SELECT [ListID], [Name], [FlightSim], [FlightSimVersion], [AircraftManufacturer]," +
+                " [AircraftModel], [SimManufacturer], [SimModel], [SimVersion], [FlowcortVersion]" +
+                ", [Type], [Version] FROM [List]";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -2929,7 +3635,7 @@ WHERE        (ItemID = @Original_ItemID)";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(FSXSE_A321_TutorialDataSet.ListDataTable dataTable) {
+        public virtual int Fill(FlowcortDataDataSet.ListDataTable dataTable) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
@@ -2942,9 +3648,9 @@ WHERE        (ItemID = @Original_ItemID)";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual FSXSE_A321_TutorialDataSet.ListDataTable GetData() {
+        public virtual FlowcortDataDataSet.ListDataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            FSXSE_A321_TutorialDataSet.ListDataTable dataTable = new FSXSE_A321_TutorialDataSet.ListDataTable();
+            FlowcortDataDataSet.ListDataTable dataTable = new FlowcortDataDataSet.ListDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
         }
@@ -2952,14 +3658,14 @@ WHERE        (ItemID = @Original_ItemID)";
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(FSXSE_A321_TutorialDataSet.ListDataTable dataTable) {
+        public virtual int Update(FlowcortDataDataSet.ListDataTable dataTable) {
             return this.Adapter.Update(dataTable);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(FSXSE_A321_TutorialDataSet dataSet) {
+        public virtual int Update(FlowcortDataDataSet dataSet) {
             return this.Adapter.Update(dataSet, "List");
         }
         
@@ -3004,25 +3710,72 @@ WHERE        (ItemID = @Original_ItemID)";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(long ListID, string Name, string Type, string Version) {
-            this.Adapter.InsertCommand.Parameters[0].Value = ((long)(ListID));
+        public virtual int Insert(string Name, string FlightSim, string FlightSimVersion, string AircraftManufacturer, string AircraftModel, string SimManufacturer, string SimModel, string SimVersion, string FlowcortVersion, string Type, string Version) {
             if ((Name == null)) {
+                this.Adapter.InsertCommand.Parameters[0].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[0].Value = ((string)(Name));
+            }
+            if ((FlightSim == null)) {
                 this.Adapter.InsertCommand.Parameters[1].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.InsertCommand.Parameters[1].Value = ((string)(Name));
+                this.Adapter.InsertCommand.Parameters[1].Value = ((string)(FlightSim));
+            }
+            if ((FlightSimVersion == null)) {
+                this.Adapter.InsertCommand.Parameters[2].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[2].Value = ((string)(FlightSimVersion));
+            }
+            if ((AircraftManufacturer == null)) {
+                this.Adapter.InsertCommand.Parameters[3].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[3].Value = ((string)(AircraftManufacturer));
+            }
+            if ((AircraftModel == null)) {
+                this.Adapter.InsertCommand.Parameters[4].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[4].Value = ((string)(AircraftModel));
+            }
+            if ((SimManufacturer == null)) {
+                this.Adapter.InsertCommand.Parameters[5].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[5].Value = ((string)(SimManufacturer));
+            }
+            if ((SimModel == null)) {
+                this.Adapter.InsertCommand.Parameters[6].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[6].Value = ((string)(SimModel));
+            }
+            if ((SimVersion == null)) {
+                this.Adapter.InsertCommand.Parameters[7].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[7].Value = ((string)(SimVersion));
+            }
+            if ((FlowcortVersion == null)) {
+                this.Adapter.InsertCommand.Parameters[8].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[8].Value = ((string)(FlowcortVersion));
             }
             if ((Type == null)) {
                 throw new global::System.ArgumentNullException("Type");
             }
             else {
-                this.Adapter.InsertCommand.Parameters[2].Value = ((string)(Type));
+                this.Adapter.InsertCommand.Parameters[9].Value = ((string)(Type));
             }
             if ((Version == null)) {
-                this.Adapter.InsertCommand.Parameters[3].Value = global::System.DBNull.Value;
+                this.Adapter.InsertCommand.Parameters[10].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.InsertCommand.Parameters[3].Value = ((string)(Version));
+                this.Adapter.InsertCommand.Parameters[10].Value = ((string)(Version));
             }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
             if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
@@ -3044,7 +3797,7 @@ WHERE        (ItemID = @Original_ItemID)";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(long ListID, string Name, string Type, string Version, long Original_ListID) {
+        public virtual int Update(long ListID, string Name, string FlightSim, string FlightSimVersion, string AircraftManufacturer, string AircraftModel, string SimManufacturer, string SimModel, string SimVersion, string FlowcortVersion, string Type, string Version, long Original_ListID) {
             this.Adapter.UpdateCommand.Parameters[0].Value = ((long)(ListID));
             if ((Name == null)) {
                 this.Adapter.UpdateCommand.Parameters[1].Value = global::System.DBNull.Value;
@@ -3052,19 +3805,67 @@ WHERE        (ItemID = @Original_ItemID)";
             else {
                 this.Adapter.UpdateCommand.Parameters[1].Value = ((string)(Name));
             }
+            if ((FlightSim == null)) {
+                this.Adapter.UpdateCommand.Parameters[2].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[2].Value = ((string)(FlightSim));
+            }
+            if ((FlightSimVersion == null)) {
+                this.Adapter.UpdateCommand.Parameters[3].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[3].Value = ((string)(FlightSimVersion));
+            }
+            if ((AircraftManufacturer == null)) {
+                this.Adapter.UpdateCommand.Parameters[4].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[4].Value = ((string)(AircraftManufacturer));
+            }
+            if ((AircraftModel == null)) {
+                this.Adapter.UpdateCommand.Parameters[5].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[5].Value = ((string)(AircraftModel));
+            }
+            if ((SimManufacturer == null)) {
+                this.Adapter.UpdateCommand.Parameters[6].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[6].Value = ((string)(SimManufacturer));
+            }
+            if ((SimModel == null)) {
+                this.Adapter.UpdateCommand.Parameters[7].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[7].Value = ((string)(SimModel));
+            }
+            if ((SimVersion == null)) {
+                this.Adapter.UpdateCommand.Parameters[8].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[8].Value = ((string)(SimVersion));
+            }
+            if ((FlowcortVersion == null)) {
+                this.Adapter.UpdateCommand.Parameters[9].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[9].Value = ((string)(FlowcortVersion));
+            }
             if ((Type == null)) {
                 throw new global::System.ArgumentNullException("Type");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[2].Value = ((string)(Type));
+                this.Adapter.UpdateCommand.Parameters[10].Value = ((string)(Type));
             }
             if ((Version == null)) {
-                this.Adapter.UpdateCommand.Parameters[3].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[11].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[3].Value = ((string)(Version));
+                this.Adapter.UpdateCommand.Parameters[11].Value = ((string)(Version));
             }
-            this.Adapter.UpdateCommand.Parameters[4].Value = ((long)(Original_ListID));
+            this.Adapter.UpdateCommand.Parameters[12].Value = ((long)(Original_ListID));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
             if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -3085,8 +3886,8 @@ WHERE        (ItemID = @Original_ItemID)";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(string Name, string Type, string Version, long Original_ListID) {
-            return this.Update(Original_ListID, Name, Type, Version, Original_ListID);
+        public virtual int Update(string Name, string FlightSim, string FlightSimVersion, string AircraftManufacturer, string AircraftModel, string SimManufacturer, string SimModel, string SimVersion, string FlowcortVersion, string Type, string Version, long Original_ListID) {
+            return this.Update(Original_ListID, Name, FlightSim, FlightSimVersion, AircraftManufacturer, AircraftModel, SimManufacturer, SimModel, SimVersion, FlowcortVersion, Type, Version, Original_ListID);
         }
     }
     
@@ -3212,7 +4013,6 @@ WHERE        (ItemID = @Original_ItemID)";
             tableMapping.SourceTable = "Table";
             tableMapping.DataSetTable = "Section";
             tableMapping.ColumnMappings.Add("SectionID", "SectionID");
-            tableMapping.ColumnMappings.Add("ListID", "ListID");
             tableMapping.ColumnMappings.Add("Description", "Description");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::System.Data.SQLite.SQLiteCommand();
@@ -3229,16 +4029,9 @@ WHERE        (ItemID = @Original_ItemID)";
             this._adapter.DeleteCommand.Parameters.Add(param);
             this._adapter.InsertCommand = new global::System.Data.SQLite.SQLiteCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = "INSERT INTO Section\r\n                         (ListID, Description)\r\nVALUES      " +
-                "  (@ListID, @Description)";
+            this._adapter.InsertCommand.CommandText = "INSERT INTO Section\r\n                         (Description)\r\nVALUES        (@Desc" +
+                "ription)";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
-            param = new global::System.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "@ListID";
-            param.DbType = global::System.Data.DbType.Int32;
-            param.DbType = global::System.Data.DbType.Int32;
-            param.Size = 4;
-            param.SourceColumn = "ListID";
-            this._adapter.InsertCommand.Parameters.Add(param);
             param = new global::System.Data.SQLite.SQLiteParameter();
             param.ParameterName = "@Description";
             param.DbType = global::System.Data.DbType.String;
@@ -3247,8 +4040,8 @@ WHERE        (ItemID = @Original_ItemID)";
             this._adapter.InsertCommand.Parameters.Add(param);
             this._adapter.UpdateCommand = new global::System.Data.SQLite.SQLiteCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = "UPDATE       Section\r\nSET                SectionID = @SectionID, ListID = @ListID" +
-                ", Description = @Description\r\nWHERE        (SectionID = @Original_SectionID)";
+            this._adapter.UpdateCommand.CommandText = "UPDATE       Section\r\nSET                SectionID = @SectionID, Description = @D" +
+                "escription\r\nWHERE        (SectionID = @Original_SectionID)";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
             param = new global::System.Data.SQLite.SQLiteParameter();
             param.ParameterName = "@SectionID";
@@ -3256,13 +4049,6 @@ WHERE        (ItemID = @Original_ItemID)";
             param.DbType = global::System.Data.DbType.Int64;
             param.Size = 8;
             param.SourceColumn = "SectionID";
-            this._adapter.UpdateCommand.Parameters.Add(param);
-            param = new global::System.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "@ListID";
-            param.DbType = global::System.Data.DbType.Int32;
-            param.DbType = global::System.Data.DbType.Int32;
-            param.Size = 4;
-            param.SourceColumn = "ListID";
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::System.Data.SQLite.SQLiteParameter();
             param.ParameterName = "@Description";
@@ -3284,7 +4070,7 @@ WHERE        (ItemID = @Original_ItemID)";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SQLite.SQLiteConnection();
-            this._connection.ConnectionString = global::Flowcort.Properties.Settings.Default.FSXSE_A321_TutorialConnectionString;
+            this._connection.ConnectionString = global::Flowcort.Properties.Settings.Default.FlowcortDataConnectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -3293,7 +4079,7 @@ WHERE        (ItemID = @Original_ItemID)";
             this._commandCollection = new global::System.Data.SQLite.SQLiteCommand[1];
             this._commandCollection[0] = new global::System.Data.SQLite.SQLiteCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT [SectionID], [ListID], [Description] FROM [Section]";
+            this._commandCollection[0].CommandText = "SELECT [SectionID], [Description] FROM [Section]";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -3301,7 +4087,7 @@ WHERE        (ItemID = @Original_ItemID)";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(FSXSE_A321_TutorialDataSet.SectionDataTable dataTable) {
+        public virtual int Fill(FlowcortDataDataSet.SectionDataTable dataTable) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
@@ -3314,9 +4100,9 @@ WHERE        (ItemID = @Original_ItemID)";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual FSXSE_A321_TutorialDataSet.SectionDataTable GetData() {
+        public virtual FlowcortDataDataSet.SectionDataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            FSXSE_A321_TutorialDataSet.SectionDataTable dataTable = new FSXSE_A321_TutorialDataSet.SectionDataTable();
+            FlowcortDataDataSet.SectionDataTable dataTable = new FlowcortDataDataSet.SectionDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
         }
@@ -3324,14 +4110,14 @@ WHERE        (ItemID = @Original_ItemID)";
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(FSXSE_A321_TutorialDataSet.SectionDataTable dataTable) {
+        public virtual int Update(FlowcortDataDataSet.SectionDataTable dataTable) {
             return this.Adapter.Update(dataTable);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(FSXSE_A321_TutorialDataSet dataSet) {
+        public virtual int Update(FlowcortDataDataSet dataSet) {
             return this.Adapter.Update(dataSet, "Section");
         }
         
@@ -3376,13 +4162,12 @@ WHERE        (ItemID = @Original_ItemID)";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(int ListID, string Description) {
-            this.Adapter.InsertCommand.Parameters[0].Value = ((int)(ListID));
+        public virtual int Insert(string Description) {
             if ((Description == null)) {
                 throw new global::System.ArgumentNullException("Description");
             }
             else {
-                this.Adapter.InsertCommand.Parameters[1].Value = ((string)(Description));
+                this.Adapter.InsertCommand.Parameters[0].Value = ((string)(Description));
             }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
             if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
@@ -3404,16 +4189,15 @@ WHERE        (ItemID = @Original_ItemID)";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(long SectionID, int ListID, string Description, long Original_SectionID) {
+        public virtual int Update(long SectionID, string Description, long Original_SectionID) {
             this.Adapter.UpdateCommand.Parameters[0].Value = ((long)(SectionID));
-            this.Adapter.UpdateCommand.Parameters[1].Value = ((int)(ListID));
             if ((Description == null)) {
                 throw new global::System.ArgumentNullException("Description");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[2].Value = ((string)(Description));
+                this.Adapter.UpdateCommand.Parameters[1].Value = ((string)(Description));
             }
-            this.Adapter.UpdateCommand.Parameters[3].Value = ((long)(Original_SectionID));
+            this.Adapter.UpdateCommand.Parameters[2].Value = ((long)(Original_SectionID));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
             if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -3434,8 +4218,8 @@ WHERE        (ItemID = @Original_ItemID)";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(int ListID, string Description, long Original_SectionID) {
-            return this.Update(Original_SectionID, ListID, Description, Original_SectionID);
+        public virtual int Update(string Description, long Original_SectionID) {
+            return this.Update(Original_SectionID, Description, Original_SectionID);
         }
     }
     
@@ -3576,23 +4360,23 @@ WHERE        (ItemID = @Original_ItemID)";
         ///</summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        private int UpdateUpdatedRows(FSXSE_A321_TutorialDataSet dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
+        private int UpdateUpdatedRows(FlowcortDataDataSet dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
             int result = 0;
-            if ((this._listTableAdapter != null)) {
-                global::System.Data.DataRow[] updatedRows = dataSet.List.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
-                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
-                if (((updatedRows != null) 
-                            && (0 < updatedRows.Length))) {
-                    result = (result + this._listTableAdapter.Update(updatedRows));
-                    allChangedRows.AddRange(updatedRows);
-                }
-            }
             if ((this._sectionTableAdapter != null)) {
                 global::System.Data.DataRow[] updatedRows = dataSet.Section.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
                 updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
                 if (((updatedRows != null) 
                             && (0 < updatedRows.Length))) {
                     result = (result + this._sectionTableAdapter.Update(updatedRows));
+                    allChangedRows.AddRange(updatedRows);
+                }
+            }
+            if ((this._listTableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.List.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
+                if (((updatedRows != null) 
+                            && (0 < updatedRows.Length))) {
+                    result = (result + this._listTableAdapter.Update(updatedRows));
                     allChangedRows.AddRange(updatedRows);
                 }
             }
@@ -3613,21 +4397,21 @@ WHERE        (ItemID = @Original_ItemID)";
         ///</summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        private int UpdateInsertedRows(FSXSE_A321_TutorialDataSet dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
+        private int UpdateInsertedRows(FlowcortDataDataSet dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
             int result = 0;
-            if ((this._listTableAdapter != null)) {
-                global::System.Data.DataRow[] addedRows = dataSet.List.Select(null, null, global::System.Data.DataViewRowState.Added);
-                if (((addedRows != null) 
-                            && (0 < addedRows.Length))) {
-                    result = (result + this._listTableAdapter.Update(addedRows));
-                    allAddedRows.AddRange(addedRows);
-                }
-            }
             if ((this._sectionTableAdapter != null)) {
                 global::System.Data.DataRow[] addedRows = dataSet.Section.Select(null, null, global::System.Data.DataViewRowState.Added);
                 if (((addedRows != null) 
                             && (0 < addedRows.Length))) {
                     result = (result + this._sectionTableAdapter.Update(addedRows));
+                    allAddedRows.AddRange(addedRows);
+                }
+            }
+            if ((this._listTableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.List.Select(null, null, global::System.Data.DataViewRowState.Added);
+                if (((addedRows != null) 
+                            && (0 < addedRows.Length))) {
+                    result = (result + this._listTableAdapter.Update(addedRows));
                     allAddedRows.AddRange(addedRows);
                 }
             }
@@ -3647,7 +4431,7 @@ WHERE        (ItemID = @Original_ItemID)";
         ///</summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        private int UpdateDeletedRows(FSXSE_A321_TutorialDataSet dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows) {
+        private int UpdateDeletedRows(FlowcortDataDataSet dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows) {
             int result = 0;
             if ((this._itemTableAdapter != null)) {
                 global::System.Data.DataRow[] deletedRows = dataSet.Item.Select(null, null, global::System.Data.DataViewRowState.Deleted);
@@ -3657,19 +4441,19 @@ WHERE        (ItemID = @Original_ItemID)";
                     allChangedRows.AddRange(deletedRows);
                 }
             }
-            if ((this._sectionTableAdapter != null)) {
-                global::System.Data.DataRow[] deletedRows = dataSet.Section.Select(null, null, global::System.Data.DataViewRowState.Deleted);
-                if (((deletedRows != null) 
-                            && (0 < deletedRows.Length))) {
-                    result = (result + this._sectionTableAdapter.Update(deletedRows));
-                    allChangedRows.AddRange(deletedRows);
-                }
-            }
             if ((this._listTableAdapter != null)) {
                 global::System.Data.DataRow[] deletedRows = dataSet.List.Select(null, null, global::System.Data.DataViewRowState.Deleted);
                 if (((deletedRows != null) 
                             && (0 < deletedRows.Length))) {
                     result = (result + this._listTableAdapter.Update(deletedRows));
+                    allChangedRows.AddRange(deletedRows);
+                }
+            }
+            if ((this._sectionTableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.Section.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+                if (((deletedRows != null) 
+                            && (0 < deletedRows.Length))) {
+                    result = (result + this._sectionTableAdapter.Update(deletedRows));
                     allChangedRows.AddRange(deletedRows);
                 }
             }
@@ -3705,7 +4489,7 @@ WHERE        (ItemID = @Original_ItemID)";
         ///</summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public virtual int UpdateAll(FSXSE_A321_TutorialDataSet dataSet) {
+        public virtual int UpdateAll(FlowcortDataDataSet dataSet) {
             if ((dataSet == null)) {
                 throw new global::System.ArgumentNullException("dataSet");
             }
