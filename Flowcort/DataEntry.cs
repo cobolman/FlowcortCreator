@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SQLite;
 using System.Drawing;
 using System.IO;
 using System.Linq;
@@ -13,6 +14,7 @@ namespace Flowcort
 {
     public partial class DataEntry : Form
     {
+        public string ConnectionString = @"data source=|DataDirectory|FlowcortData.fct";
         public DataEntry()
         {
             InitializeComponent();
@@ -20,18 +22,8 @@ namespace Flowcort
 
         private void DataEntry_Load(object sender, EventArgs e)
         {
-            var dataPath = AppDomain.CurrentDomain.GetData("DataDirectory");
-
-            itemTableAdapter.Connection.ConnectionString = @"data source=|DataDirectory|FlowcortData.fct";
-            sectionTableAdapter.Connection.ConnectionString = @"data source=|DataDirectory|FlowcortData.fct";
-
-            this.itemTableAdapter.Fill(this.flowcortDataDataSet.Item);
-            this.sectionTableAdapter.Fill(this.flowcortDataDataSet.Section);
-
             this.pictureBox1.AllowDrop = true;
             this.pictureBox2.AllowDrop = true;
-
-            // this.itemDataGridView.Sort(itemDataGridView.Columns["Position"], ListSortDirection.Ascending);
         }
 
         private void DataEntry_FormClosing(object sender, FormClosingEventArgs e)
@@ -91,6 +83,7 @@ namespace Flowcort
             try
             {
                 this.Validate();
+                this.itemBindingSource.EndEdit();
                 this.sectionBindingSource.EndEdit();
                 this.tableAdapterManager.UpdateAll(this.flowcortDataDataSet);
 
@@ -238,6 +231,12 @@ namespace Flowcort
 
         private void DataEntry_Shown(object sender, EventArgs e)
         {
+            itemTableAdapter.Connection.ConnectionString = ConnectionString;
+            sectionTableAdapter.Connection.ConnectionString = ConnectionString;
+
+            this.sectionTableAdapter.Fill(this.flowcortDataDataSet.Section);
+            this.itemTableAdapter.Fill(this.flowcortDataDataSet.Item);
+
             this.itemDataGridView.Focus();
         }
 
@@ -251,18 +250,39 @@ namespace Flowcort
 
         private void itemDataGridView_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
         {
-            foreach (DataGridViewRow row in itemDataGridView.Rows)
-            {
-                if (Convert.ToBoolean(row.Cells["Event"].Value))
-                {
-                    row.DefaultCellStyle.BackColor = Color.PapayaWhip;
-                }
+            foreach(DataGridViewRow row in itemDataGridView.Rows)
+                ColorizeRow(row);
+        }
 
-                if (Convert.ToBoolean(row.Cells["Subsection"].Value))
+        private void ColorizeRow(DataGridViewRow row)
+        {
+            if (row != null)
+            {
+                bool evnt = Convert.ToBoolean(row.Cells["Event"].Value);
+                bool subSection = Convert.ToBoolean(row.Cells["Subsection"].Value);
+
+                if (evnt || subSection)
                 {
-                    row.DefaultCellStyle.BackColor = Color.WhiteSmoke;
+                    row.DefaultCellStyle.ForeColor = SystemColors.WindowText;
+
+                    if (evnt)
+                    {
+                        row.DefaultCellStyle.BackColor = Color.PapayaWhip;
+                    }
+
+                    if (subSection)
+                    {
+                        row.DefaultCellStyle.BackColor = Color.WhiteSmoke;
+                    }
                 }
             }
+
+
+        }
+
+        private void itemBindingSource_CurrentChanged(object sender, EventArgs e)
+        {
+
         }
 
     }

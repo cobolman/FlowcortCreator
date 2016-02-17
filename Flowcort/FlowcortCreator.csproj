@@ -117,10 +117,19 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>FlowcortDataDataSet.xsd</DependentUpon>
     </Compile>
+    <Compile Include="ListSelector.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ListSelector.Designer.cs">
+      <DependentUpon>ListSelector.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="DataEntry.resx">
       <DependentUpon>DataEntry.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ListSelector.resx">
+      <DependentUpon>ListSelector.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -147,9 +156,6 @@
       <DependentUpon>FlowcortDataDataSet.xsd</DependentUpon>
     </None>
     <None Include="Flowcort_TemporaryKey.pfx" />
-    <None Include="FSXSE_A321_Tutorial.ORG">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
     <None Include="packages.config">
       <SubType>Designer</SubType>
     </None>
@@ -164,7 +170,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Status-dialog-error-icon.png" />

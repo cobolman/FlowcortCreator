@@ -402,8 +402,6 @@ namespace Flowcort {
             
             private global::System.Data.DataColumn columnRemarks;
             
-            private global::System.Data.DataColumn columnSectionID1;
-            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public ItemDataTable() {
@@ -591,14 +589,6 @@ namespace Flowcort {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn SectionID1Column {
-                get {
-                    return this.columnSectionID1;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -652,8 +642,7 @@ namespace Flowcort {
                         string Image3, 
                         string Audio, 
                         string Video, 
-                        string Remarks, 
-                        int SectionID1) {
+                        string Remarks) {
                 ItemRow rowItemRow = ((ItemRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
@@ -674,8 +663,7 @@ namespace Flowcort {
                         Image3,
                         Audio,
                         Video,
-                        Remarks,
-                        SectionID1};
+                        Remarks};
                 if ((parentSectionRowByFK_Section_Item != null)) {
                     columnValuesArray[1] = parentSectionRowByFK_Section_Item[0];
                 }
@@ -727,7 +715,6 @@ namespace Flowcort {
                 this.columnAudio = base.Columns["Audio"];
                 this.columnVideo = base.Columns["Video"];
                 this.columnRemarks = base.Columns["Remarks"];
-                this.columnSectionID1 = base.Columns["SectionID1"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -771,8 +758,6 @@ namespace Flowcort {
                 base.Columns.Add(this.columnVideo);
                 this.columnRemarks = new global::System.Data.DataColumn("Remarks", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnRemarks);
-                this.columnSectionID1 = new global::System.Data.DataColumn("SectionID1", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnSectionID1);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnItemID}, true));
                 this.columnItemID.AutoIncrement = true;
@@ -788,18 +773,21 @@ namespace Flowcort {
                 this.columnAction.MaxLength = 50;
                 this.columnValToSet.MaxLength = 50;
                 this.columnCoP.AllowDBNull = false;
+                this.columnCoP.DefaultValue = ((bool)(false));
                 this.columnTurnaround.AllowDBNull = false;
+                this.columnTurnaround.DefaultValue = ((bool)(false));
                 this.columnEvent.AllowDBNull = false;
+                this.columnEvent.DefaultValue = ((bool)(false));
                 this.columnSubsection.AllowDBNull = false;
+                this.columnSubsection.DefaultValue = ((bool)(false));
                 this.columnDone.AllowDBNull = false;
+                this.columnDone.DefaultValue = ((bool)(false));
                 this.columnImage1.MaxLength = 50;
                 this.columnImage2.MaxLength = 50;
                 this.columnImage3.MaxLength = 50;
                 this.columnAudio.MaxLength = 50;
                 this.columnVideo.MaxLength = 250;
                 this.columnRemarks.MaxLength = 500;
-                this.columnSectionID1.AllowDBNull = false;
-                this.columnSectionID1.Caption = "SectionID";
                 this.ExtendedProperties.Add("Generator_RowClassName", "ItemRow");
                 this.ExtendedProperties.Add("Generator_RowEvArgName", "ItemRowChangeEvent");
                 this.ExtendedProperties.Add("Generator_RowEvHandlerName", "ItemRowChangeEventHandler");
@@ -1246,6 +1234,7 @@ namespace Flowcort {
                 this.columnSimVersion.MaxLength = 12;
                 this.columnFlowcortVersion.MaxLength = 12;
                 this.columnType.AllowDBNull = false;
+                this.columnType.DefaultValue = ((string)("T"));
                 this.columnType.MaxLength = 1;
                 this.columnVersion.MaxLength = 12;
                 this.columnSimNameInFS.MaxLength = 20;
@@ -1942,17 +1931,6 @@ namespace Flowcort {
                 }
                 set {
                     this[this.tableItem.RemarksColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public int SectionID1 {
-                get {
-                    return ((int)(this[this.tableItem.SectionID1Column]));
-                }
-                set {
-                    this[this.tableItem.SectionID1Column] = value;
                 }
             }
             
@@ -2749,7 +2727,7 @@ namespace Flowcort.FlowcortDataDataSetTableAdapters {
             tableMapping.ColumnMappings.Add("Audio", "Audio");
             tableMapping.ColumnMappings.Add("Video", "Video");
             tableMapping.ColumnMappings.Add("Remarks", "Remarks");
-            tableMapping.ColumnMappings.Add("SectionID", "SectionID1");
+            tableMapping.ColumnMappings.Add("SectionID", "SectionID");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::System.Data.SQLite.SQLiteCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
@@ -2765,144 +2743,117 @@ namespace Flowcort.FlowcortDataDataSetTableAdapters {
             this._adapter.DeleteCommand.Parameters.Add(param);
             this._adapter.InsertCommand = new global::System.Data.SQLite.SQLiteCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = @"INSERT INTO Item
-                         (SectionID, Position, Location, Area, Part, [Action], ValToSet, CoP, Turnaround, Event, Subsection, Done, Image1, Image2, Image3, Audio, Video, Remarks)
-VALUES        (@SectionID, @Position, @Location, @Area, @Part, @Action, @ValToSet, @CoP, @Turnaround, @Event, @Subsection, @Done, @Image1, @Image2, @Image3, @Audio, @Video, @Remarks)";
+            this._adapter.InsertCommand.CommandText = @"INSERT INTO [main].[sqlite_default_schema].[Item] ([SectionID], [Position], [Location], [Area], [Part], [Action], [ValToSet], [CoP], [Turnaround], [Event], [Subsection], [Done], [Image1], [Image2], [Image3], [Audio], [Video], [Remarks]) VALUES (@SectionID, @Position, @Location, @Area, @Part, @Action, @ValToSet, @CoP, @Turnaround, @Event, @Subsection, @Done, @Image1, @Image2, @Image3, @Audio, @Video, @Remarks)";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             param = new global::System.Data.SQLite.SQLiteParameter();
             param.ParameterName = "@SectionID";
-            param.DbType = global::System.Data.DbType.Int32;
-            param.DbType = global::System.Data.DbType.Int32;
-            param.Size = 4;
+            param.DbType = global::System.Data.DbType.Int64;
+            param.DbType = global::System.Data.DbType.Int64;
             param.SourceColumn = "SectionID";
             this._adapter.InsertCommand.Parameters.Add(param);
             param = new global::System.Data.SQLite.SQLiteParameter();
             param.ParameterName = "@Position";
             param.DbType = global::System.Data.DbType.Int32;
             param.DbType = global::System.Data.DbType.Int32;
-            param.Size = 4;
             param.SourceColumn = "Position";
             this._adapter.InsertCommand.Parameters.Add(param);
             param = new global::System.Data.SQLite.SQLiteParameter();
             param.ParameterName = "@Location";
             param.DbType = global::System.Data.DbType.String;
-            param.Size = 50;
             param.SourceColumn = "Location";
             this._adapter.InsertCommand.Parameters.Add(param);
             param = new global::System.Data.SQLite.SQLiteParameter();
             param.ParameterName = "@Area";
             param.DbType = global::System.Data.DbType.String;
-            param.Size = 50;
             param.SourceColumn = "Area";
             this._adapter.InsertCommand.Parameters.Add(param);
             param = new global::System.Data.SQLite.SQLiteParameter();
             param.ParameterName = "@Part";
             param.DbType = global::System.Data.DbType.String;
-            param.Size = 50;
             param.SourceColumn = "Part";
             this._adapter.InsertCommand.Parameters.Add(param);
             param = new global::System.Data.SQLite.SQLiteParameter();
             param.ParameterName = "@Action";
             param.DbType = global::System.Data.DbType.String;
-            param.Size = 50;
             param.SourceColumn = "Action";
             this._adapter.InsertCommand.Parameters.Add(param);
             param = new global::System.Data.SQLite.SQLiteParameter();
             param.ParameterName = "@ValToSet";
             param.DbType = global::System.Data.DbType.String;
-            param.Size = 50;
             param.SourceColumn = "ValToSet";
             this._adapter.InsertCommand.Parameters.Add(param);
             param = new global::System.Data.SQLite.SQLiteParameter();
             param.ParameterName = "@CoP";
             param.DbType = global::System.Data.DbType.Boolean;
             param.DbType = global::System.Data.DbType.Boolean;
-            param.Size = 1;
             param.SourceColumn = "CoP";
             this._adapter.InsertCommand.Parameters.Add(param);
             param = new global::System.Data.SQLite.SQLiteParameter();
             param.ParameterName = "@Turnaround";
             param.DbType = global::System.Data.DbType.Boolean;
             param.DbType = global::System.Data.DbType.Boolean;
-            param.Size = 1;
             param.SourceColumn = "Turnaround";
             this._adapter.InsertCommand.Parameters.Add(param);
             param = new global::System.Data.SQLite.SQLiteParameter();
             param.ParameterName = "@Event";
             param.DbType = global::System.Data.DbType.Boolean;
             param.DbType = global::System.Data.DbType.Boolean;
-            param.Size = 1;
             param.SourceColumn = "Event";
             this._adapter.InsertCommand.Parameters.Add(param);
             param = new global::System.Data.SQLite.SQLiteParameter();
             param.ParameterName = "@Subsection";
             param.DbType = global::System.Data.DbType.Boolean;
             param.DbType = global::System.Data.DbType.Boolean;
-            param.Size = 1;
             param.SourceColumn = "Subsection";
             this._adapter.InsertCommand.Parameters.Add(param);
             param = new global::System.Data.SQLite.SQLiteParameter();
             param.ParameterName = "@Done";
             param.DbType = global::System.Data.DbType.Boolean;
             param.DbType = global::System.Data.DbType.Boolean;
-            param.Size = 1;
             param.SourceColumn = "Done";
             this._adapter.InsertCommand.Parameters.Add(param);
             param = new global::System.Data.SQLite.SQLiteParameter();
             param.ParameterName = "@Image1";
             param.DbType = global::System.Data.DbType.String;
-            param.Size = 50;
             param.SourceColumn = "Image1";
             this._adapter.InsertCommand.Parameters.Add(param);
             param = new global::System.Data.SQLite.SQLiteParameter();
             param.ParameterName = "@Image2";
             param.DbType = global::System.Data.DbType.String;
-            param.Size = 50;
             param.SourceColumn = "Image2";
             this._adapter.InsertCommand.Parameters.Add(param);
             param = new global::System.Data.SQLite.SQLiteParameter();
             param.ParameterName = "@Image3";
             param.DbType = global::System.Data.DbType.String;
-            param.Size = 50;
             param.SourceColumn = "Image3";
             this._adapter.InsertCommand.Parameters.Add(param);
             param = new global::System.Data.SQLite.SQLiteParameter();
             param.ParameterName = "@Audio";
             param.DbType = global::System.Data.DbType.String;
-            param.Size = 50;
             param.SourceColumn = "Audio";
             this._adapter.InsertCommand.Parameters.Add(param);
             param = new global::System.Data.SQLite.SQLiteParameter();
             param.ParameterName = "@Video";
             param.DbType = global::System.Data.DbType.String;
-            param.Size = 250;
             param.SourceColumn = "Video";
             this._adapter.InsertCommand.Parameters.Add(param);
             param = new global::System.Data.SQLite.SQLiteParameter();
             param.ParameterName = "@Remarks";
             param.DbType = global::System.Data.DbType.String;
-            param.Size = 500;
             param.SourceColumn = "Remarks";
             this._adapter.InsertCommand.Parameters.Add(param);
             this._adapter.UpdateCommand = new global::System.Data.SQLite.SQLiteCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
             this._adapter.UpdateCommand.CommandText = @"UPDATE       Item
-SET                ItemID = @ItemID, SectionID = @SectionID, Position = @Position, Location = @Location, Area = @Area, Part = @Part, [Action] = @Action, ValToSet = @ValToSet, CoP = @CoP, Turnaround = @Turnaround, 
-                         Event = @Event, Subsection = @Subsection, Done = @Done, Image1 = @Image1, Image2 = @Image2, Image3 = @Image3, Audio = @Audio, Video = @Video, Remarks = @Remarks
+SET                SectionID = @SectionID, Position = @Position, Location = @Location, Area = @Area, Part = @Part, [Action] = @Action, ValToSet = @ValToSet, CoP = @CoP, Turnaround = @Turnaround, Event = @Event, 
+                         Subsection = @Subsection, Done = @Done, Image1 = @Image1, Image2 = @Image2, Image3 = @Image3, Audio = @Audio, Video = @Video, Remarks = @Remarks
 WHERE        (ItemID = @Original_ItemID)";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
             param = new global::System.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "@ItemID";
+            param.ParameterName = "@SectionID";
             param.DbType = global::System.Data.DbType.Int64;
             param.DbType = global::System.Data.DbType.Int64;
             param.Size = 8;
-            param.SourceColumn = "ItemID";
-            this._adapter.UpdateCommand.Parameters.Add(param);
-            param = new global::System.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "@SectionID";
-            param.DbType = global::System.Data.DbType.Int32;
-            param.DbType = global::System.Data.DbType.Int32;
-            param.Size = 4;
             param.SourceColumn = "SectionID";
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::System.Data.SQLite.SQLiteParameter();
@@ -3122,7 +3073,7 @@ WHERE        (ItemID = @Original_ItemID)";
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
         public virtual int Insert(
-                    int SectionID, 
+                    long SectionID, 
                     int Position, 
                     string Location, 
                     string Area, 
@@ -3140,7 +3091,7 @@ WHERE        (ItemID = @Original_ItemID)";
                     string Audio, 
                     string Video, 
                     string Remarks) {
-            this.Adapter.InsertCommand.Parameters[0].Value = ((int)(SectionID));
+            this.Adapter.InsertCommand.Parameters[0].Value = ((long)(SectionID));
             this.Adapter.InsertCommand.Parameters[1].Value = ((int)(Position));
             if ((Location == null)) {
                 this.Adapter.InsertCommand.Parameters[2].Value = global::System.DBNull.Value;
@@ -3234,8 +3185,7 @@ WHERE        (ItemID = @Original_ItemID)";
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
         public virtual int Update(
-                    long ItemID, 
-                    int SectionID, 
+                    long SectionID, 
                     int Position, 
                     string Location, 
                     string Area, 
@@ -3254,81 +3204,80 @@ WHERE        (ItemID = @Original_ItemID)";
                     string Video, 
                     string Remarks, 
                     long Original_ItemID) {
-            this.Adapter.UpdateCommand.Parameters[0].Value = ((long)(ItemID));
-            this.Adapter.UpdateCommand.Parameters[1].Value = ((int)(SectionID));
-            this.Adapter.UpdateCommand.Parameters[2].Value = ((int)(Position));
+            this.Adapter.UpdateCommand.Parameters[0].Value = ((long)(SectionID));
+            this.Adapter.UpdateCommand.Parameters[1].Value = ((int)(Position));
             if ((Location == null)) {
+                this.Adapter.UpdateCommand.Parameters[2].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[2].Value = ((string)(Location));
+            }
+            if ((Area == null)) {
                 this.Adapter.UpdateCommand.Parameters[3].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[3].Value = ((string)(Location));
+                this.Adapter.UpdateCommand.Parameters[3].Value = ((string)(Area));
             }
-            if ((Area == null)) {
+            if ((Part == null)) {
                 this.Adapter.UpdateCommand.Parameters[4].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[4].Value = ((string)(Area));
+                this.Adapter.UpdateCommand.Parameters[4].Value = ((string)(Part));
             }
-            if ((Part == null)) {
+            if ((Action == null)) {
                 this.Adapter.UpdateCommand.Parameters[5].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[5].Value = ((string)(Part));
+                this.Adapter.UpdateCommand.Parameters[5].Value = ((string)(Action));
             }
-            if ((Action == null)) {
+            if ((ValToSet == null)) {
                 this.Adapter.UpdateCommand.Parameters[6].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[6].Value = ((string)(Action));
+                this.Adapter.UpdateCommand.Parameters[6].Value = ((string)(ValToSet));
             }
-            if ((ValToSet == null)) {
-                this.Adapter.UpdateCommand.Parameters[7].Value = global::System.DBNull.Value;
+            this.Adapter.UpdateCommand.Parameters[7].Value = ((bool)(CoP));
+            this.Adapter.UpdateCommand.Parameters[8].Value = ((bool)(Turnaround));
+            this.Adapter.UpdateCommand.Parameters[9].Value = ((bool)(Event));
+            this.Adapter.UpdateCommand.Parameters[10].Value = ((bool)(Subsection));
+            this.Adapter.UpdateCommand.Parameters[11].Value = ((bool)(Done));
+            if ((Image1 == null)) {
+                this.Adapter.UpdateCommand.Parameters[12].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[7].Value = ((string)(ValToSet));
+                this.Adapter.UpdateCommand.Parameters[12].Value = ((string)(Image1));
             }
-            this.Adapter.UpdateCommand.Parameters[8].Value = ((bool)(CoP));
-            this.Adapter.UpdateCommand.Parameters[9].Value = ((bool)(Turnaround));
-            this.Adapter.UpdateCommand.Parameters[10].Value = ((bool)(Event));
-            this.Adapter.UpdateCommand.Parameters[11].Value = ((bool)(Subsection));
-            this.Adapter.UpdateCommand.Parameters[12].Value = ((bool)(Done));
-            if ((Image1 == null)) {
+            if ((Image2 == null)) {
                 this.Adapter.UpdateCommand.Parameters[13].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[13].Value = ((string)(Image1));
+                this.Adapter.UpdateCommand.Parameters[13].Value = ((string)(Image2));
             }
-            if ((Image2 == null)) {
+            if ((Image3 == null)) {
                 this.Adapter.UpdateCommand.Parameters[14].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[14].Value = ((string)(Image2));
+                this.Adapter.UpdateCommand.Parameters[14].Value = ((string)(Image3));
             }
-            if ((Image3 == null)) {
+            if ((Audio == null)) {
                 this.Adapter.UpdateCommand.Parameters[15].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[15].Value = ((string)(Image3));
+                this.Adapter.UpdateCommand.Parameters[15].Value = ((string)(Audio));
             }
-            if ((Audio == null)) {
+            if ((Video == null)) {
                 this.Adapter.UpdateCommand.Parameters[16].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[16].Value = ((string)(Audio));
+                this.Adapter.UpdateCommand.Parameters[16].Value = ((string)(Video));
             }
-            if ((Video == null)) {
+            if ((Remarks == null)) {
                 this.Adapter.UpdateCommand.Parameters[17].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[17].Value = ((string)(Video));
+                this.Adapter.UpdateCommand.Parameters[17].Value = ((string)(Remarks));
             }
-            if ((Remarks == null)) {
-                this.Adapter.UpdateCommand.Parameters[18].Value = global::System.DBNull.Value;
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[18].Value = ((string)(Remarks));
-            }
-            this.Adapter.UpdateCommand.Parameters[19].Value = ((long)(Original_ItemID));
+            this.Adapter.UpdateCommand.Parameters[18].Value = ((long)(Original_ItemID));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
             if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -3343,33 +3292,6 @@ WHERE        (ItemID = @Original_ItemID)";
                     this.Adapter.UpdateCommand.Connection.Close();
                 }
             }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(
-                    int SectionID, 
-                    int Position, 
-                    string Location, 
-                    string Area, 
-                    string Part, 
-                    string Action, 
-                    string ValToSet, 
-                    bool CoP, 
-                    bool Turnaround, 
-                    bool Event, 
-                    bool Subsection, 
-                    bool Done, 
-                    string Image1, 
-                    string Image2, 
-                    string Image3, 
-                    string Audio, 
-                    string Video, 
-                    string Remarks, 
-                    long Original_ItemID) {
-            return this.Update(Original_ItemID, SectionID, Position, Location, Area, Part, Action, ValToSet, CoP, Turnaround, Event, Subsection, Done, Image1, Image2, Image3, Audio, Video, Remarks, Original_ItemID);
         }
     }
     
