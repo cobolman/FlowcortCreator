@@ -134,7 +134,6 @@
             // 
             this.itemBindingSource.DataMember = "FK_Section_Item";
             this.itemBindingSource.DataSource = this.sectionBindingSource;
-            this.itemBindingSource.CurrentChanged += new System.EventHandler(this.itemBindingSource_CurrentChanged);
             this.itemBindingSource.PositionChanged += new System.EventHandler(this.itemBindingSource_PositionChanged);
             // 
             // btnSave
@@ -439,6 +438,7 @@
             // 
             // itemDataGridView
             // 
+            this.itemDataGridView.AllowUserToAddRows = false;
             this.itemDataGridView.AllowUserToOrderColumns = true;
             this.itemDataGridView.AutoGenerateColumns = false;
             this.itemDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -464,18 +464,19 @@
             this.remarksDataGridViewTextBoxColumn});
             this.itemDataGridView.DataSource = this.itemBindingSource;
             this.itemDataGridView.Location = new System.Drawing.Point(2, 42);
+            this.itemDataGridView.MultiSelect = false;
             this.itemDataGridView.Name = "itemDataGridView";
             this.itemDataGridView.RowHeadersVisible = false;
             this.itemDataGridView.Size = new System.Drawing.Size(706, 275);
             this.itemDataGridView.TabIndex = 46;
             this.itemDataGridView.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.itemDataGridView_DataBindingComplete);
+            this.itemDataGridView.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.itemDataGridView_RowsAdded);
             // 
             // itemIDDataGridViewTextBoxColumn
             // 
             this.itemIDDataGridViewTextBoxColumn.DataPropertyName = "ItemID";
             this.itemIDDataGridViewTextBoxColumn.HeaderText = "ItemID";
             this.itemIDDataGridViewTextBoxColumn.Name = "itemIDDataGridViewTextBoxColumn";
-            this.itemIDDataGridViewTextBoxColumn.Visible = false;
             // 
             // sectionIDDataGridViewTextBoxColumn
             // 

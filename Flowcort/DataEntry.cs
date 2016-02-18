@@ -15,6 +15,13 @@ namespace Flowcort
     public partial class DataEntry : Form
     {
         public string ConnectionString = @"data source=|DataDirectory|FlowcortData.fct";
+
+        private long _NextItemPosition = 0;
+        private long _NextSectionPosition = 0;
+
+        public long NextItemPosition { get { _NextItemPosition += 10; return _NextItemPosition; } set { _NextItemPosition = value; } }
+        public long NextSectionPosition { get { _NextSectionPosition += 10; return _NextSectionPosition; } set { _NextSectionPosition = value; } }
+
         public DataEntry()
         {
             InitializeComponent();
@@ -56,8 +63,30 @@ namespace Flowcort
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            sectionBindingSource.AddNew();
+            if (flowcortDataDataSet.HasChanges())
+                saveData();
+
+            DataRowView drv = (DataRowView)sectionBindingSource.AddNew();
+            drv.Row["Position"] = NextSectionPosition;
             txtbxSection.Focus();
+        }
+
+        private long GetMaxPosition(String tableName)
+        {
+            long result = 0;
+
+            using (SQLiteConnection con = new SQLiteConnection(ConnectionString))
+            {
+                SQLiteCommand cmd = con.CreateCommand();
+                cmd.CommandText = "SELECT MAX(Position) FROM " + tableName;
+
+                con.Open();
+                var obj = cmd.ExecuteScalar();
+                if (obj != null)
+                    result = Convert.ToInt64(obj);
+            }
+
+            return result;
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
@@ -98,7 +127,11 @@ namespace Flowcort
 
         private void btnAddItem_Click(object sender, EventArgs e)
         {
-            itemBindingSource.AddNew();
+            if (flowcortDataDataSet.HasChanges())
+                saveData();
+
+            DataRowView drv = (DataRowView)itemBindingSource.AddNew();
+            drv.Row["Position"] = NextItemPosition;
             itemDataGridView.Focus();
         }
 
@@ -234,6 +267,9 @@ namespace Flowcort
             itemTableAdapter.Connection.ConnectionString = ConnectionString;
             sectionTableAdapter.Connection.ConnectionString = ConnectionString;
 
+            _NextItemPosition = GetMaxPosition("Item");
+            _NextSectionPosition = GetMaxPosition("Section");
+
             this.sectionTableAdapter.Fill(this.flowcortDataDataSet.Section);
             this.itemTableAdapter.Fill(this.flowcortDataDataSet.Item);
 
@@ -280,9 +316,9 @@ namespace Flowcort
 
         }
 
-        private void itemBindingSource_CurrentChanged(object sender, EventArgs e)
+        private void itemDataGridView_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
         {
-
+            itemDataGridView.Rows[e.RowIndex].Cells[3].Selected = true;
         }
 
     }
