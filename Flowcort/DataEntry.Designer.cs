@@ -139,7 +139,7 @@
             // btnSave
             // 
             this.btnSave.Image = global::Flowcort.Properties.Resources.Save32;
-            this.btnSave.Location = new System.Drawing.Point(670, 1);
+            this.btnSave.Location = new System.Drawing.Point(134, 2);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(38, 38);
             this.btnSave.TabIndex = 34;
@@ -149,7 +149,7 @@
             // btnDelete
             // 
             this.btnDelete.Image = global::Flowcort.Properties.Resources.Delete32;
-            this.btnDelete.Location = new System.Drawing.Point(630, 1);
+            this.btnDelete.Location = new System.Drawing.Point(90, 2);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(38, 38);
             this.btnDelete.TabIndex = 33;
@@ -159,7 +159,7 @@
             // btnAdd
             // 
             this.btnAdd.Image = global::Flowcort.Properties.Resources.Add32;
-            this.btnAdd.Location = new System.Drawing.Point(590, 1);
+            this.btnAdd.Location = new System.Drawing.Point(46, 2);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(38, 38);
             this.btnAdd.TabIndex = 32;
@@ -169,7 +169,7 @@
             // btnNext
             // 
             this.btnNext.Image = global::Flowcort.Properties.Resources.Next32;
-            this.btnNext.Location = new System.Drawing.Point(550, 1);
+            this.btnNext.Location = new System.Drawing.Point(178, 2);
             this.btnNext.Name = "btnNext";
             this.btnNext.Size = new System.Drawing.Size(38, 38);
             this.btnNext.TabIndex = 31;
@@ -190,15 +190,15 @@
             // 
             this.txtbxSection.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.sectionBindingSource, "Description", true));
             this.txtbxSection.Font = new System.Drawing.Font("Verdana", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtbxSection.Location = new System.Drawing.Point(42, 2);
+            this.txtbxSection.Location = new System.Drawing.Point(2, 43);
             this.txtbxSection.Name = "txtbxSection";
-            this.txtbxSection.Size = new System.Drawing.Size(455, 37);
+            this.txtbxSection.Size = new System.Drawing.Size(652, 37);
             this.txtbxSection.TabIndex = 29;
             // 
             // btnDeleteItem
             // 
             this.btnDeleteItem.Image = global::Flowcort.Properties.Resources.Delete32;
-            this.btnDeleteItem.Location = new System.Drawing.Point(711, 82);
+            this.btnDeleteItem.Location = new System.Drawing.Point(46, 89);
             this.btnDeleteItem.Name = "btnDeleteItem";
             this.btnDeleteItem.Size = new System.Drawing.Size(38, 38);
             this.btnDeleteItem.TabIndex = 44;
@@ -208,7 +208,7 @@
             // btnAddItem
             // 
             this.btnAddItem.Image = global::Flowcort.Properties.Resources.Add32;
-            this.btnAddItem.Location = new System.Drawing.Point(711, 42);
+            this.btnAddItem.Location = new System.Drawing.Point(2, 89);
             this.btnAddItem.Name = "btnAddItem";
             this.btnAddItem.Size = new System.Drawing.Size(38, 38);
             this.btnAddItem.TabIndex = 43;
@@ -218,7 +218,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(749, 27);
+            this.label3.Location = new System.Drawing.Point(711, 27);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(49, 13);
             this.label3.TabIndex = 42;
@@ -227,10 +227,10 @@
             // txtbxRemarks
             // 
             this.txtbxRemarks.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.itemBindingSource, "Remarks", true));
-            this.txtbxRemarks.Location = new System.Drawing.Point(751, 43);
+            this.txtbxRemarks.Location = new System.Drawing.Point(714, 43);
             this.txtbxRemarks.Multiline = true;
             this.txtbxRemarks.Name = "txtbxRemarks";
-            this.txtbxRemarks.Size = new System.Drawing.Size(212, 274);
+            this.txtbxRemarks.Size = new System.Drawing.Size(249, 274);
             this.txtbxRemarks.TabIndex = 41;
             // 
             // btnDeleteImage2
@@ -283,6 +283,7 @@
             this.pictureBox2.Click += new System.EventHandler(this.pictureBox2_Click);
             this.pictureBox2.DragDrop += new System.Windows.Forms.DragEventHandler(this.pictureBox2_DragDrop);
             this.pictureBox2.DragEnter += new System.Windows.Forms.DragEventHandler(this.pictureBox2_DragEnter);
+            this.pictureBox2.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pictureBox1_MouseDown);
             // 
             // pictureBox1
             // 
@@ -296,12 +297,13 @@
             this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
             this.pictureBox1.DragDrop += new System.Windows.Forms.DragEventHandler(this.pictureBox1_DragDrop);
             this.pictureBox1.DragEnter += new System.Windows.Forms.DragEventHandler(this.pictureBox1_DragEnter);
+            this.pictureBox1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pictureBox1_MouseDown);
             // 
             // textBox1
             // 
             this.textBox1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.sectionBindingSource, "Position", true));
             this.textBox1.Font = new System.Drawing.Font("Verdana", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(500, 2);
+            this.textBox1.Location = new System.Drawing.Point(660, 43);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(48, 37);
             this.textBox1.TabIndex = 45;
@@ -463,11 +465,11 @@
             this.videoDataGridViewTextBoxColumn,
             this.remarksDataGridViewTextBoxColumn});
             this.itemDataGridView.DataSource = this.itemBindingSource;
-            this.itemDataGridView.Location = new System.Drawing.Point(2, 42);
+            this.itemDataGridView.Location = new System.Drawing.Point(2, 133);
             this.itemDataGridView.MultiSelect = false;
             this.itemDataGridView.Name = "itemDataGridView";
             this.itemDataGridView.RowHeadersVisible = false;
-            this.itemDataGridView.Size = new System.Drawing.Size(706, 275);
+            this.itemDataGridView.Size = new System.Drawing.Size(706, 184);
             this.itemDataGridView.TabIndex = 46;
             this.itemDataGridView.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.itemDataGridView_DataBindingComplete);
             this.itemDataGridView.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.itemDataGridView_RowsAdded);
@@ -477,6 +479,7 @@
             this.itemIDDataGridViewTextBoxColumn.DataPropertyName = "ItemID";
             this.itemIDDataGridViewTextBoxColumn.HeaderText = "ItemID";
             this.itemIDDataGridViewTextBoxColumn.Name = "itemIDDataGridViewTextBoxColumn";
+            this.itemIDDataGridViewTextBoxColumn.Visible = false;
             // 
             // sectionIDDataGridViewTextBoxColumn
             // 

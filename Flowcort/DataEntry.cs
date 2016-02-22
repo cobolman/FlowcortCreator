@@ -7,6 +7,7 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -14,17 +15,33 @@ namespace Flowcort
 {
     public partial class DataEntry : Form
     {
-        public string ConnectionString = @"data source=|DataDirectory|FlowcortData.fct";
+        private string _DBFile = "FlowcortData";
+        private string _ConnectionString = @"data source=|DataDirectory|FlowcortData.fct";
+        public string ConnectionString{
+            get{ return _ConnectionString; }
+            set{ 
+                _ConnectionString = value;
+                var m = Regex.Match( _ConnectionString, @"(.*\|DataDirectory\|\\*)(.*)(.fct)");
+                _DBFile = m.Groups[2].Value.ToString();
+
+                _ImageFolder = AppDomain.CurrentDomain.BaseDirectory + _DBFile + "\\FullSize";
+                _ThumbnailFolder = AppDomain.CurrentDomain.BaseDirectory + _DBFile +"\\Thumbnail";
+            }
+        }
+            // = @"data source=|DataDirectory|FlowcortData.fct";
 
         private long _NextItemPosition = 0;
         private long _NextSectionPosition = 0;
+
+        private string _ImageFolder;
+        private string _ThumbnailFolder;
 
         public long NextItemPosition { get { _NextItemPosition += 10; return _NextItemPosition; } set { _NextItemPosition = value; } }
         public long NextSectionPosition { get { _NextSectionPosition += 10; return _NextSectionPosition; } set { _NextSectionPosition = value; } }
 
         public DataEntry()
         {
-            InitializeComponent();
+            InitializeComponent();         
         }
 
         private void DataEntry_Load(object sender, EventArgs e)
@@ -143,17 +160,17 @@ namespace Flowcort
 
         private void pictureBox1_Click(object sender, EventArgs e)
         {
-            showImage("Image1", ".png");
+            showImage("Image1");
         }
 
         private void pictureBox2_Click(object sender, EventArgs e)
         {
-            showImage("Image2", ".png");
+            showImage("Image2");
         }
 
-        private void showImage(string columnName, string imgType)
+        private void showImage(string columnName)
         {
-            string fname = "Images\\" + ((DataRowView)itemBindingSource.Current).Row[columnName].ToString() + imgType;
+            string fname = _ImageFolder + "\\"  + ((DataRowView)itemBindingSource.Current).Row[columnName].ToString();
 
             if (File.Exists(fname))
             {
@@ -188,24 +205,17 @@ namespace Flowcort
 
         private void pictureBox1_DragDrop(object sender, DragEventArgs e)
         {
-            string[] fname = (string[])e.Data.GetData(DataFormats.FileDrop, false);
-
-            string fn = System.IO.Path.GetFileNameWithoutExtension(fname[0]);
-
-            ((DataRowView)itemBindingSource.Current).Row["Image1"] = fn;
-            pictureBox1.ImageLocation = qualifyFileName(fn + ".jpg");
+            SaveAndDrawImage(pictureBox1, "Image1", e);
         }
 
         private string qualifyFileName(string fname)
         {
-            if (fname != ".jpg")
-            {
-                return "ImagesTN\\" + fname;
-            }
+            fname = _ThumbnailFolder + "\\" + fname;
+
+            if (File.Exists(fname))
+                return fname;
             else
-            {
                 return "";
-            }
         }
 
         private void pictureBox1_DragEnter(object sender, DragEventArgs e)
@@ -213,14 +223,31 @@ namespace Flowcort
             e.Effect = DragDropEffects.All;
         }
 
+        // todo review all drag and drop. We should only allow it from the expected folders OR save the file to the expected folders
         private void pictureBox2_DragDrop(object sender, DragEventArgs e)
         {
+            SaveAndDrawImage(pictureBox2, "Image2", e);
+        }
+
+        private void SaveAndDrawImage(PictureBox pb, String dataColumn, DragEventArgs e)
+        {
             string[] fname = (string[])e.Data.GetData(DataFormats.FileDrop, false);
+            string fn = Path.GetFileName( fname[0] );
 
-            string fn = System.IO.Path.GetFileNameWithoutExtension(fname[0]);
+            if (!FileExistsInImagesFolder(fname[0]))
+            {
+                using (Bitmap bmp = new Bitmap(fname[0]))
+                    fn = ConvertAndSaveImage(bmp);
+            }
 
-            ((DataRowView)itemBindingSource.Current).Row["Image2"] = fn;
-            pictureBox2.ImageLocation = qualifyFileName(fn + ".jpg");
+            ((DataRowView)itemBindingSource.Current).Row[dataColumn] = fn;
+            pb.ImageLocation = qualifyFileName(fn);
+        }
+
+        private bool FileExistsInImagesFolder(String fname)
+        {
+            string fn = Path.GetFileName(fname);
+            return File.Exists( _ThumbnailFolder + "\\" + fn );
         }
 
         private void pictureBox2_DragEnter(object sender, DragEventArgs e)
@@ -254,8 +281,8 @@ namespace Flowcort
 
             if (itemBindingSource.Current != null)
             {
-                string img1Locn = ((DataRowView)itemBindingSource.Current).Row["Image1"].ToString() + ".jpg";
-                string img2Locn = ((DataRowView)itemBindingSource.Current).Row["Image2"].ToString() + ".jpg";
+                string img1Locn = ((DataRowView)itemBindingSource.Current).Row["Image1"].ToString();
+                string img2Locn = ((DataRowView)itemBindingSource.Current).Row["Image2"].ToString();
 
                 pictureBox1.ImageLocation = qualifyFileName(img1Locn);
                 pictureBox2.ImageLocation = qualifyFileName(img2Locn);
@@ -319,6 +346,82 @@ namespace Flowcort
         private void itemDataGridView_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
         {
             itemDataGridView.Rows[e.RowIndex].Cells[3].Selected = true;
+        }
+
+        private void pictureBox1_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+                ContextMenu m = new ContextMenu();
+                MenuItem paste = new MenuItem();
+
+                if (Clipboard.ContainsImage())
+                {
+                    string img = ((sender as PictureBox) == pictureBox1) ? "Image1" : "Image2";
+                    paste.Text = "Paste to " + img;
+                    paste.Click += paste_Click;
+                }
+                else
+                {
+                    paste.Text = "Nothing on clipboard";
+                    paste.Enabled = false;
+                }
+
+                m.MenuItems.Add(paste);
+                m.Show(sender as PictureBox, new Point(e.X, e.Y));
+            }
+        }
+
+        private void paste_Click(object sender, EventArgs e)
+        {
+            if (Clipboard.ContainsImage())
+            {
+                string fname = ConvertAndSaveImage(Clipboard.GetImage());
+
+                MenuItem mi = sender as MenuItem;
+                PictureBox pb;
+                pb = (mi.Text == "Paste to Image1") ? pictureBox1 : pictureBox2;
+
+                //pb.Image = FlowcortImage.FixedSize(Clipboard.GetImage(), 208, 117);
+                //pb.Image.Save(dirThumbnail + "\\" + rnd, System.Drawing.Imaging.ImageFormat.Jpeg);
+
+                if (pb == pictureBox1)
+                {
+                    ((DataRowView)itemBindingSource.Current).Row["Image1"] = fname;
+                    pictureBox1.ImageLocation = qualifyFileName(fname);
+                }
+                else
+                {
+                    ((DataRowView)itemBindingSource.Current).Row["Image2"] = fname;
+                    pictureBox2.ImageLocation = qualifyFileName(fname);
+                }
+            }
+        }
+
+        private string ConvertAndSaveImage(Image p)
+        {
+            string result = "";
+
+            if (p != null)
+            {
+                string dirImages = AppDomain.CurrentDomain.BaseDirectory + _DBFile;
+                string dirFullSize = dirImages + "\\FullSize";
+                string dirThumbnail = dirImages + "\\Thumbnail";
+
+                System.IO.Directory.CreateDirectory(dirImages);
+                System.IO.Directory.CreateDirectory(dirFullSize);
+                System.IO.Directory.CreateDirectory(dirThumbnail);
+
+                string rnd = Path.GetFileNameWithoutExtension(Path.GetRandomFileName()) + ".jpg";
+                p.Save(dirFullSize + "\\" + rnd, System.Drawing.Imaging.ImageFormat.Jpeg);
+
+                Image tn = FlowcortImage.FixedSize( p, 208, 117 );
+                tn.Save(dirThumbnail + "\\" + rnd, System.Drawing.Imaging.ImageFormat.Jpeg);
+
+                result = rnd;
+            }
+
+            return result;
         }
 
     }
