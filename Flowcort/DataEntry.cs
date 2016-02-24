@@ -321,8 +321,8 @@ namespace Flowcort
         {
             if (row != null)
             {
-                bool evnt = Convert.ToBoolean(row.Cells["Event"].Value);
-                bool subSection = Convert.ToBoolean(row.Cells["Subsection"].Value);
+                bool evnt = Convert.ToBoolean(row.Cells["eventDataGridViewCheckBoxColumn"].Value);
+                bool subSection = Convert.ToBoolean(row.Cells["subsectionDataGridViewCheckBoxColumn"].Value);
 
                 if (evnt || subSection)
                 {
